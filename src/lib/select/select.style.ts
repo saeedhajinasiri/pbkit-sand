@@ -1,5 +1,3 @@
-// import {Variant} from "../button/button.props";
-
 export const COLORS = {
   primary: 'bg-primary-100 border-primary-dark text-primary-dark active:primary-dark',
   danger: 'bg-danger-100 border-danger-dark text-danger-dark active:danger-dark',
@@ -21,14 +19,6 @@ export const SIZES = {
   tiny: 'h-6 md:h-8',
 }
 
-export const LABEL_SIZES = {
-  huge: 'h-14 md:h-16 h-auto peer-focus:!h-auto',
-  large: 'h-12 md:h-14 h-auto peer-focus:!h-auto',
-  medium: 'h-10 md:h-12 h-auto peer-focus:!h-auto',
-  small: 'h-8 md:h-10 h-auto peer-focus:!h-auto',
-  tiny: 'h-6 md:h-8 h-auto peer-focus:!h-auto',
-}
-
 export const HOVER_COLORS = {
   primary: 'hover:bg-primary hover:text-white',
   danger: 'hover:bg-danger hover:text-white',
@@ -42,13 +32,17 @@ export const HOVER_COLORS = {
   inherit: 'bg-transparent hover:bg-transparent'
 };
 
-/**
- *
- * @param variants
- * @constructor
- */
+export const ROUNDED = {
+  full: 'rounded-full',
+  huge: 'rounded-3xl',
+  large: 'rounded-2xl',
+  medium: 'rounded-lg',
+  small: 'rounded',
+  tiny: 'rounded-sm',
+  none: 'rounded-none',
+};
 
 export const VARIANTS = {
-  filled: ' text-m-sm md:text-d-sm bg-grey-light flex',
+  filled: 'text-m-sm md:text-d-sm flex',
   outlined: 'text-grey-light bg-white border flex',
 };

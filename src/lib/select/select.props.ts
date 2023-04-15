@@ -26,6 +26,10 @@ export interface SelectProps {
   error?: boolean
 
   StartAdornment?: ReactNode
+
+  helperText?: string,
+
+  rounded?: 'full' | 'huge' | 'large' | 'medium' | 'small' | 'tiny' | 'none'
 }
 
 export type Variant = 'outlined' | 'filled';
