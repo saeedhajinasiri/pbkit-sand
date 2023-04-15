@@ -1,4 +1,5 @@
 import {OverridableStringUnion, Colors} from "../../types";
+import {ReactNode} from "react";
 
 export interface SelectProps {
   optionsList: Array<any>
@@ -20,12 +21,18 @@ export interface SelectProps {
   color?: OverridableStringUnion<Colors,
     SelectPropsColorOverrides>;
 
-  size?: 'tiny' | 'small' | 'medium' | 'large' | 'huge' | 'search'
+  size?: 'tiny' | 'small' | 'medium' | 'large' | 'huge'
 
   error?: boolean
+
+  StartAdornment?: ReactNode
+
+  helperText?: string,
+
+  rounded?: 'full' | 'huge' | 'large' | 'medium' | 'small' | 'tiny' | 'none'
 }
 
-export type Variant = 'text' | 'outlined' | 'contained';
+export type Variant = 'outlined' | 'filled';
 
 export interface SelectPropsColorOverrides {
 
