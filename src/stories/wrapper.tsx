@@ -1,5 +1,5 @@
 import React, {ReactNode} from "react";
-import Text from '../lib/text';
+import {Text} from "@pezeshk-book/ui-kit";
 
 export const Wrapper = ({title, children, className, titleColor}: { title: string, children: ReactNode, className?: string, titleColor?: string }) => {
   return (

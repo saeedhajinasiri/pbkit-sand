@@ -30,8 +30,9 @@ export const Select = ({size = 'medium', defaultText = 'متن ورودی', opti
     }
   }, [])
 
-  const handleClickOutside = (event: any) => {
-    if (wrapperRef.current && !wrapperRef.current.contains(event.target) && dropDownRef.current && !dropDownRef.current.contains(event.target)) {
+  const handleClickOutside: { (event: MouseEvent): void } = (event: MouseEvent) => {
+    const targets = event.target as HTMLDivElement
+    if (wrapperRef.current && !wrapperRef.current.contains(targets) && dropDownRef.current && !dropDownRef.current.contains(targets)) {
       setShow(false)
     }
   };
@@ -43,10 +44,11 @@ export const Select = ({size = 'medium', defaultText = 'متن ورودی', opti
   };
 
 
-  const handleOptionClick = (e: any) => {
+  const handleOptionClick = (e: React.MouseEvent<HTMLDivElement>): void => {
     setShow(false)
-    setSelectedText(e.target.innerText)
-    onChange(e.target.getAttribute("data-name"))
+    const input = e.target as HTMLDivElement
+    setSelectedText(input.innerText)
+    onChange(input.getAttribute("data-name"))
   };
 
   // if disabled close dropdown
@@ -114,9 +116,9 @@ export const Select = ({size = 'medium', defaultText = 'متن ورودی', opti
             )}
             key={option[id]}>
             <Text
-              color={`${option[text] === selectedText ? 'grey.800' : '!red.600'}`}
+              color={`${option[text] === selectedText ? 'grey.800' : 'grey.400'}`}
               align={'right'}
-              type={`${option[text] === selectedText ? 'bold' : ''}`}
+              type={`${option[text] === selectedText ? 'bold' : 'regular'}`}
               typography={'sm'}
               data-name={option[id]}
               key={option[id]}
