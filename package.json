@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@pezeshk-book/ui-kit": "^0.2.37",
     "@storybook/addons": "^6.5.15",
     "animate.css": "^4.1.1",
     "tsconfig-paths-webpack-plugin": "^4.0.0"

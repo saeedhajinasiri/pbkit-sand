@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import {Select} from './select';
 import {SelectProps} from '../../lib/select/select.props'
+import StartAdornmentIcon from "../../lib/select/StartAdornment";
 
 const tempList = [
   {
@@ -47,6 +48,7 @@ const Template: ComponentStory<typeof Select> = (args: SelectProps) => {
       defaultText={args.defaultText}
       disabled={args.disabled}
       size={args.size}
+      {...args}
       optionsList={tempList}
       id={'id'}
       value={select}
@@ -93,7 +95,6 @@ const SizeTemplate: ComponentStory<typeof Select> = (args: SelectProps) => {
       <Select {...args} size={'medium'} defaultText={'Medium'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
       <Select {...args} size={'large'} defaultText={'Large'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
       <Select {...args} size={'huge'} defaultText={'Huge'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <Select {...args} size={'search'} defaultText={'Search'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
     </div>
   );
 }
@@ -122,11 +123,24 @@ const VariantTemplate: ComponentStory<typeof Select> = (args: SelectProps) => {
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <Select {...args} variant={'text'} defaultText={'Variant = Text'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <Select {...args} variant={'filled'} defaultText={'Variant = Filled'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
       <Select {...args} variant={'outlined'} defaultText={'Variant = Outlined'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <Select {...args} variant={'contained'} defaultText={'Variant = Contained'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
     </div>
   );
 }
 export const Variant = VariantTemplate.bind({});
+
+const StartAdornmentTemplate: ComponentStory<typeof Select> = (args: SelectProps) => {
+  const [select, setSelect] = useState('')
+
+  const handleChange = (e: any) => {
+    setSelect(e)
+  }
+  return (
+    <div className={'flex flex-col gap-8'}>
+      <Select {...args} defaultText={'with start adornment'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} StartAdornment={<StartAdornmentIcon/>}/>
+    </div>
+  );
+}
+export const StartAdornment = StartAdornmentTemplate.bind({});
 
