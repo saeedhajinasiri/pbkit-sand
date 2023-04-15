@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import {Select} from './select';
 import {SelectProps} from '../../lib/select/select.props'
-import StartAdornmentIcon from "../../lib/select/StartAdornment";
+import StartAdornmentIcon from "./start-adornment";
 
 const tempList = [
   {
@@ -99,6 +99,41 @@ const SizeTemplate: ComponentStory<typeof Select> = (args: SelectProps) => {
   );
 }
 export const Size = SizeTemplate.bind({});
+
+
+const RoundedTemplate: ComponentStory<typeof Select> = (args: SelectProps) => {
+  const [select, setSelect] = useState('')
+
+  const handleChange = (e: any) => {
+    setSelect(e)
+  }
+  return (
+    <div className={'flex flex-col gap-8'}>
+      <Select {...args} rounded={'full'} defaultText={'full'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <Select {...args} rounded={'huge'} defaultText={'huge'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <Select {...args} rounded={'large'} defaultText={'large'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <Select {...args} rounded={'medium'} defaultText={'medium'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <Select {...args} rounded={'small'} defaultText={'small'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <Select {...args} rounded={'tiny'} defaultText={'tiny'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <Select {...args} rounded={'none'} defaultText={'none'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+    </div>
+  );
+}
+export const Rounded = RoundedTemplate.bind({});
+
+const HelperTextTemplate: ComponentStory<typeof Select> = (args: SelectProps) => {
+  const [select, setSelect] = useState('')
+
+  const handleChange = (e: any) => {
+    setSelect(e)
+  }
+  return (
+    <div className={'flex flex-col gap-8'}>
+      <Select {...args} helperText={'this is an example for helper text'} defaultText={'helper text'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+    </div>
+  );
+}
+export const HelperText = HelperTextTemplate.bind({});
 
 const DisabledTemplate: ComponentStory<typeof Select> = (args: SelectProps) => {
   const [select, setSelect] = useState('')
