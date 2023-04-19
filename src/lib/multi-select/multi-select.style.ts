@@ -12,11 +12,11 @@ export const COLORS = {
 };
 
 export const SIZES = {
-  huge: 'h-14 md:h-16',
-  large: 'h-12 md:h-14',
-  medium: 'h-10 md:h-12',
-  small: 'h-8 md:h-10',
-  tiny: 'h-6 md:h-8',
+  huge: 'min-h-14 md:min-h-16 h-auto',
+  large: 'min-h-12 md:min-h-14 h-auto',
+  medium: 'min-h-10 md:min-h-12 h-auto',
+  small: 'min-h-8 md:min-h-10 h-auto',
+  tiny: 'min-h-6 md:min-h-8 h-auto',
 }
 
 export const HOVER_COLORS = {
@@ -46,3 +46,28 @@ export const VARIANTS = {
   filled: 'text-m-sm md:text-d-sm flex',
   outlined: 'text-grey-light bg-white border flex',
 };
+
+export const SELECTED_ITEMS_TEXT = {
+  tiny: 'text-m-xxxs sm:text-t-xxxs md:text-d-xxxs',
+  small: 'text-m-xxs sm:text-t-xxs md:text-d-xxs',
+  medium: 'text-m-xs sm:text-t-xs md:text-d-xs',
+  large: 'text-m-sm sm:text-t-sm md:text-d-sm',
+  huge: 'text-m-sm sm:text-t-sm md:text-d-sm',
+}
+
+export const SELECTED_ITEMS_ICON = {
+  tiny: '10',
+  small: '12',
+  medium: '14',
+  large: '16',
+  huge: '16',
+}
+
+export const INPUT_TEXT = {
+  tiny: 'text-m-xxxs sm:text-t-xxxs md:text-d-xxxs',
+  small: 'text-m-xxs sm:text-t-xxs md:text-d-xxs',
+  medium: 'text-m-xs sm:text-t-xs md:text-d-xs',
+  large: 'text-m-sm sm:text-t-sm md:text-d-sm',
+  huge: 'text-m-sm sm:text-t-sm md:text-d-sm',
+}
+

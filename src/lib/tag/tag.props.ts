@@ -1,18 +1,11 @@
-import {OverridableStringUnion, Colors} from "../../types";
-import {ReactNode} from "react";
+import {Colors, OverridableStringUnion} from "../../types";
 
-export interface SelectProps {
-  optionsList: Array<any>
-
-  defaultText?: string
-
-  value: string
-
+export interface TagProps {
   onChange: (newValue: any) => void
 
   id: number | string
 
-  text: string
+  title: string
 
   disabled?: boolean
 
@@ -22,12 +15,6 @@ export interface SelectProps {
     SelectPropsColorOverrides>;
 
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'huge'
-
-  error?: boolean
-
-  StartAdornment?: ReactNode
-
-  helperText?: string,
 
   rounded?: 'full' | 'huge' | 'large' | 'medium' | 'small' | 'tiny' | 'none'
 }
