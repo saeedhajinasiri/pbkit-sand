@@ -12,7 +12,7 @@ export interface TagProps {
   variant?: Variant
 
   color?: OverridableStringUnion<Colors,
-    SelectPropsColorOverrides>;
+    TagPropsColorOverrides>;
 
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'huge'
 
@@ -21,6 +21,6 @@ export interface TagProps {
 
 export type Variant = 'outlined' | 'filled';
 
-export interface SelectPropsColorOverrides {
+export interface TagPropsColorOverrides {
 
 }

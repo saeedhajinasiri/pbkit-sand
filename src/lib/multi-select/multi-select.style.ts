@@ -2,7 +2,7 @@ export const COLORS = {
   primary: 'bg-primary-100 border-primary-dark text-primary-dark active:primary-dark',
   danger: 'bg-danger-100 border-danger-dark text-danger-dark active:danger-dark',
   warning: 'bg-warning-100 border-warning-dark text-warning-dark active:warning-dark',
-  secondary: 'bg-secondary-100 border-secondary-dark text-secondary-dark active:secondary-dark ',
+  secondary: 'bg-secondary-100 border-secondary-dark text-secondary-dark active:secondary-dark',
   control: 'bg-control-100 border-control-dark text-control-dark active:control-dark',
   purple: 'bg-purple-100 border-purple-dark text-purple-dark active:purple-dark',
   tertiary: 'bg-tertiary-100 border-tertiary-dark text-tertiary-dark active:tertiary-dark',
@@ -61,4 +61,17 @@ export const SELECTED_ITEMS_ICON = {
   medium: '14',
   large: '16',
   huge: '16',
+}
+
+export const DROPDOWN_BORDER_COLOR = {
+  primary: 'border-primary-dark',
+  danger: 'border-danger-dark',
+  warning: 'border-warning-dark',
+  secondary: 'border-secondary-dark',
+  control: 'border-control-dark',
+  purple: 'border-purple-dark',
+  tertiary: 'border-tertiary-dark',
+  success: 'border-success-dark',
+  info: 'border-info-dark',
+  inherit: 'border-transparent'
 }

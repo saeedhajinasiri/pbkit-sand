@@ -1,11 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
 import {MultiSelectProps} from './multi-select.props'
 import classNames from "../../utils/helpers/class-names";
-import {COLORS, HOVER_COLORS, ROUNDED, SELECTED_ITEMS_ICON, SIZES, VARIANTS, TEXT_SIZE} from "./multi-select.style";
+import {COLORS, HOVER_COLORS, ROUNDED, SELECTED_ITEMS_ICON, SIZES, VARIANTS, TEXT_SIZE, DROPDOWN_BORDER_COLOR} from "./multi-select.style";
 import {Checkbox, Div, Text} from "@pezeshk-book/ui-kit";
 import Tag from '../tag/tag'
 
-export const MultiSelect = ({size = 'medium', label = "label", placeholder, optionsList, value, onChange, id, text, color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium'}: MultiSelectProps) => {
+export const MultiSelect = ({size = 'medium', label = "label", placeholder, optionsList, value, onChange, id, text, color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium', direction = "rtl"}: MultiSelectProps) => {
   let newOptionsList: any = {};
   optionsList && optionsList.length && optionsList.map(item => {
     newOptionsList = Object.assign({}, newOptionsList, {
@@ -19,10 +19,6 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
   // state
   const [searchedItems, setSearchedItems] = useState<any>(optionsList)
   const [show, setShow] = useState<boolean>(false)
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchedItems(optionsList.filter(a => a[text].includes(event.target.value)))
-  };
 
   // click outside to close dropdown
   useEffect(() => {
@@ -43,9 +39,13 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
     }
   };
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchedItems(optionsList.filter(a => a[text].includes(event.target.value)))
+  };
+
   // prevState => !prevState
   const handleListDisplay = () => {
-    !disabled && (inputRef.current && inputRef.current.value != '' ? setShow(true) : setShow(prev => !prev));
+    inputRef.current && inputRef.current.value != '' ? setShow(true) : setShow(prev => !prev);
     inputRef.current && inputRef.current.focus()
   };
 
@@ -58,7 +58,7 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
     if (currentIndex === -1) {
       newChecked.push(id)
     } else {
-      !disabled && newChecked.splice(currentIndex, 1);
+      newChecked.splice(currentIndex, 1);
     }
     onChange(newChecked);
     if (inputRef.current) {
@@ -70,7 +70,7 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
     <Div className={'flex flex-col items-start relative w-full h-auto'}>
       <Div ref={wrapperRef} className={'relative w-full'}>
         <Div
-          onClick={handleListDisplay}
+          onClick={!disabled && handleListDisplay}
           className={classNames(
             'flex items-center w-full border px-3 cursor-text',
             !disabled && (`${VARIANTS[variant]}`),
@@ -119,7 +119,7 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
             )}
             <input
               type={'text'}
-              readOnly={disabled} dir={'rtl'} ref={inputRef}
+              readOnly={disabled} dir={direction} ref={inputRef}
               className={classNames(`flex-1 outline-0 min-w-8 bg-transparent`,
                 TEXT_SIZE[size],
                 disabled ? 'cursor-not-allowed' : 'cursor-text'
@@ -129,17 +129,16 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
           </Div>
 
           <svg
-            className={classNames(``,
-              show ? 'rotate-0 duration-150' : 'rotate-180 duration-150'
-            )} width={SELECTED_ITEMS_ICON[size]} height={SELECTED_ITEMS_ICON[size]} viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            className={show ? 'rotate-0 duration-150' : 'rotate-180 duration-150'} width={SELECTED_ITEMS_ICON[size]} height={SELECTED_ITEMS_ICON[size]} viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M16.92 8.04999L10.4 1.52999C9.63002 0.759987 8.37002 0.759987 7.60002 1.52999L1.08002 8.04999" stroke={'currentColor'} strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </Div>
 
         {/*  dropdown*/}
         {searchedItems && searchedItems.length > 0 && typeof searchedItems === 'object' ? (
-          <Div className={classNames(`border-${color} mt-2 gap-y-1 flex flex-col absolute w-full top-full bg-white border text-control-500 rounded-lg shadow-lg p-2`,
+          <Div className={classNames(`mt-2 gap-y-1 flex flex-col absolute w-full top-full bg-white border text-control-500 rounded-lg shadow-lg p-2`,
             !disabled && show ? "block h-fit z-10" : "hidden",
+            DROPDOWN_BORDER_COLOR[color]
           )}
           >
             {searchedItems?.map((option: any) => (
@@ -188,7 +187,6 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
           </Text>
         </Div>
       ) : null}
-
     </Div>
 
   )

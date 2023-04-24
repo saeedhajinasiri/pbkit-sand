@@ -50,6 +50,7 @@ const Template: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) =>
       placeholder={args.placeholder}
       disabled={args.disabled}
       size={args.size}
+      rtl={args.rtl}
       {...args}
       optionsList={tempList}
       id={'id'}

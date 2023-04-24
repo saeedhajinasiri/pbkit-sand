@@ -6,7 +6,7 @@ export interface MultiSelectProps {
 
   defaultText?: string
 
-  value: any
+  value: Array<string | number>
 
   onChange: (newValue: any) => void
 
@@ -19,7 +19,7 @@ export interface MultiSelectProps {
   variant?: Variant
 
   color?: OverridableStringUnion<Colors,
-    SelectPropsColorOverrides>;
+    multiSelectPropsColorOverrides>;
 
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'huge'
 
@@ -34,15 +34,12 @@ export interface MultiSelectProps {
   label?: string
 
   rounded?: 'full' | 'huge' | 'large' | 'medium' | 'small' | 'tiny' | 'none'
+
+  direction?: string
 }
 
 export type Variant = 'outlined' | 'filled';
 
-export interface SelectPropsColorOverrides {
+export interface multiSelectPropsColorOverrides {
 
-}
-
-export interface List {
-  id: number
-  text: string
 }

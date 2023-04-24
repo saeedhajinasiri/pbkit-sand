@@ -22,8 +22,8 @@ export const Tag = ({id, title = "title", disabled, size = "medium", rounded = "
         ICON_CONTAINER_SIZE[size],
       )}>
         <svg
-          onClick={handleClick}
-          className={classNames(disabled ? 'cursor-not-allowed' : 'cursor-pointer')}
+          onClick={!disabled && handleClick}
+          className={disabled ? 'cursor-not-allowed' : 'cursor-pointer'}
           width={ICON_SIZE[size]}
           height={ICON_SIZE[size]}
           viewBox="0 0 16 16"
