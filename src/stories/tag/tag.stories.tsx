@@ -19,8 +19,8 @@ const Template: ComponentStory<typeof Tag> = (args: TagProps) => {
       size={args.size}
       rounded={args.rounded}
       {...args}
-      id={'id'}
-      title={'title'}
+      id={args.id}
+      title={args.title}
     />
   )
 }
