@@ -5,13 +5,8 @@ import {COLORS, HOVER_COLORS, ROUNDED, SELECTED_ITEMS_ICON, SIZES, VARIANTS, TEX
 import {Checkbox, Div, Text} from "@pezeshk-book/ui-kit";
 import Tag from '../tag/tag'
 
-export const MultiSelect = ({size = 'medium', label = "label", placeholder, optionsList, value, onChange, id, text, color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium', direction = "rtl"}: MultiSelectProps) => {
-  let newOptionsList: any = {};
-  optionsList && optionsList.length && optionsList.map(item => {
-    newOptionsList = Object.assign({}, newOptionsList, {
-      [item.id]: item
-    })
-  })
+export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, value, onChange, id, text, color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium', direction = "rtl"}: MultiSelectProps) => {
+
   // refs
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null)
@@ -27,6 +22,13 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
       document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [])
+
+  let newOptionsList: any = {};
+  optionsList && optionsList.length && optionsList.map(item => {
+    newOptionsList = Object.assign({}, newOptionsList, {
+      [item.id]: item
+    })
+  })
 
   const handleClickOutside: { (event: MouseEvent): void } = (event: MouseEvent) => {
     const targets = event.target as HTMLDivElement
@@ -89,7 +91,7 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
                 show || value.length >= 1 ? 'text-m-sm' : 'text-m-base',
                 "select-none h-auto px-2 absolute duration-200",
                 StartAdornment ? 'right-8' : 'right-2',
-                show || value.length >= 1 ? `translate-x-0 text-xs  ${variant === 'filled' ? `!top-0 !h-auto !leading-[0.5] bg-transparent ${StartAdornment && '!right-6 '} ` : `!right-2 !top-0 translate-y-[-50%] !bg-white rounded-lg border-white `}` : '',
+                show || value.length >= 1 ? `translate-x-0 text-xs  ${variant === 'filled' ? `!top-0 !h-auto !leading-[0.5] bg-transparent ${StartAdornment && '!right-6'}` : `!right-2 !top-0 translate-y-[-50%] !bg-white rounded-lg border-white `}` : '',
                 disabled ? '!bg-transparent' : (error ? 'text-danger' : (show ? `${COLORS[color]}` : 'text-control-400')),
                 TEXT_SIZE[size]
               )}>
@@ -108,28 +110,41 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
             </span>
           ) : null}
 
-
           <Div className={'flex flex-wrap items-center grow w-0 gap-1 my-1'}>
             {value && value.length >= 1 && (
               value.map((item: any) => (
                 <Div className={'flex flex-wrap items-center select-none gap-1 h-auto'}>
-                  <Tag onChange={handleOptionClick} title={newOptionsList[item][text]} id={newOptionsList[item][id]} rounded={rounded} disabled={disabled} size={size} color={color} variant={variant}/>
+                  <Tag
+                    onChange={handleOptionClick}
+                    title={newOptionsList[item][text]}
+                    id={newOptionsList[item][id]}
+                    rounded={rounded}
+                    disabled={disabled}
+                    size={size}
+                    color={color}
+                    variant={variant}
+                  />
                 </Div>
               ))
             )}
+
             <input
-              type={'text'}
-              readOnly={disabled} dir={direction} ref={inputRef}
+              ref={inputRef}
+              onChange={handleInputChange}
               className={classNames(`flex-1 outline-0 min-w-8 bg-transparent`,
                 TEXT_SIZE[size],
                 disabled ? 'cursor-not-allowed' : 'cursor-text'
               )}
-              onChange={handleInputChange}
+              type={'text'}
+              readOnly={disabled}
+              dir={direction}
             />
           </Div>
 
           <svg
-            className={show ? 'rotate-0 duration-150' : 'rotate-180 duration-150'} width={SELECTED_ITEMS_ICON[size]} height={SELECTED_ITEMS_ICON[size]} viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            className={show ? 'rotate-0 duration-150' : 'rotate-180 duration-150'}
+            width={SELECTED_ITEMS_ICON[size]}
+            height={SELECTED_ITEMS_ICON[size]} viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M16.92 8.04999L10.4 1.52999C9.63002 0.759987 8.37002 0.759987 7.60002 1.52999L1.08002 8.04999" stroke={'currentColor'} strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </Div>
@@ -175,14 +190,21 @@ export const MultiSelect = ({size = 'medium', label = "label", placeholder, opti
           <Div className={classNames('mt-2 flex flex-col absolute w-full top-full bg-white border text-control-500 rounded-lg shadow-lg py-2 px-3',
             show ? "block h-fit z-10" : "hidden",
           )}>
-            <Text color={'grey.400'} typography={'sm'} align={'right'}>آیتمی جهت نمایش وجود ندارد</Text>
+            <Text
+              color={'grey.400'}
+              typography={'sm'}
+              align={'right'}>
+              آیتمی جهت نمایش وجود ندارد
+            </Text>
           </Div>
         )}
 
       </Div>
       {helperText ? (
         <Div className={'px-3 w-full'}>
-          <Text color={disabled ? 'grey.500' : (error ? 'danger' : 'grey.400')} typography={'xs'}>
+          <Text
+            color={disabled ? 'grey.500' : (error ? 'danger' : 'grey.400')}
+            typography={'xs'}>
             {helperText}
           </Text>
         </Div>
