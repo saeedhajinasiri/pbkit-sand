@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import {Tag} from './tag';
-import {MultiSelectProps} from '../../lib/tag/tag.props'
-import {classNames, Div} from "@pezeshk-book/ui-kit";
+import {TagProps} from '../../lib/tag/tag.props'
 
 export default {
   title: 'PB Kit/Atoms/Tag',
@@ -10,28 +9,25 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof Tag>;
 
-const Template: ComponentStory<typeof Tag> = (args: MultiSelectProps) => {
-
+const Template: ComponentStory<typeof Tag> = (args: TagProps) => {
 
   return (
-      <Tag
-        handleOptionClick={args.handleChange}
-        variant={args.variant}
-        color={args.color}
-        disabled={args.disabled}
-        size={args.size}
-        rounded={args.rounded}
-        {...args}
-        id={'id'}
-        title={'title'}
-      />
-
+    <Tag
+      variant={args.variant}
+      color={args.color}
+      disabled={args.disabled}
+      size={args.size}
+      rounded={args.rounded}
+      {...args}
+      id={'id'}
+      title={'title'}
+    />
   )
 }
 
 export const Default = Template.bind({});
 
-const ColorTemplate: ComponentStory<typeof Tag> = (args: MultiSelectProps) => {
+const ColorTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
 
   return (
@@ -50,7 +46,7 @@ const ColorTemplate: ComponentStory<typeof Tag> = (args: MultiSelectProps) => {
 }
 export const Color = ColorTemplate.bind({});
 
-const SizeTemplate: ComponentStory<typeof Tag> = (args: MultiSelectProps) => {
+const SizeTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
 
   return (
@@ -66,7 +62,7 @@ const SizeTemplate: ComponentStory<typeof Tag> = (args: MultiSelectProps) => {
 export const Size = SizeTemplate.bind({});
 
 
-const RoundedTemplate: ComponentStory<typeof Tag> = (args: MultiSelectProps) => {
+const RoundedTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
 
   return (
@@ -84,19 +80,19 @@ const RoundedTemplate: ComponentStory<typeof Tag> = (args: MultiSelectProps) => 
 export const Rounded = RoundedTemplate.bind({});
 
 
-const DisabledTemplate: ComponentStory<typeof Tag> = (args: MultiSelectProps) => {
+const DisabledTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
 
   return (
     <div className={'flex flex-col gap-8'}>
-      <Tag {...args} disabled={true} />
-      <Tag {...args} disabled={false} />
+      <Tag {...args} disabled={true}/>
+      <Tag {...args} disabled={false}/>
     </div>
   );
 }
 export const Disabled = DisabledTemplate.bind({});
 
-const VariantTemplate: ComponentStory<typeof Tag> = (args: MultiSelectProps) => {
+const VariantTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
 
   return (

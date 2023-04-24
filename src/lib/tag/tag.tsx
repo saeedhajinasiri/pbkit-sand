@@ -1,26 +1,29 @@
+import React from "react";
 import {TagProps} from './tag.props'
 import classNames from "../../utils/helpers/class-names";
 import {COLORS, ICON_CONTAINER_SIZE, ICON_SIZE, ROUNDED, SIZES, TITLE_SIZE} from "./tag.style";
 import {Div, Text} from "@pezeshk-book/ui-kit";
 
-export const Tag = ({id, title, disabled, size, rounded, color, variant, onChange}: TagProps) => {
+export const Tag = ({id, title = "title", disabled, size = "medium", rounded = "medium", color = "primary", variant, onChange}: TagProps) => {
 
   const handleClick = () => {
     onChange(id);
   }
 
   return (
-    <Div className={classNames('flex items-center gap-x-1 px-1',
+    <Div className={classNames('w-fit flex items-center gap-x-1 px-2 py-1',
       ROUNDED[rounded],
       SIZES[size],
       disabled ? 'bg-control-200' : (`${COLORS[color]} ${variant == 'filled' ? 'border' : 'border-0'}`)
     )}>
       <Text className={classNames(TITLE_SIZE[size], disabled ? 'grey.400' : 'grey.800')}>{title}</Text>
 
-      <Div className={`relative ${ICON_CONTAINER_SIZE[size]}`}>
+      <Div className={classNames('relative flex items-center',
+        ICON_CONTAINER_SIZE[size],
+      )}>
         <svg
           onClick={handleClick}
-          className={'cursor-pointer'}
+          className={classNames(disabled ? 'cursor-not-allowed' : 'cursor-pointer')}
           width={ICON_SIZE[size]}
           height={ICON_SIZE[size]}
           viewBox="0 0 16 16"

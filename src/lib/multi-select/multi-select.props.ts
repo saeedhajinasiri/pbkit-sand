@@ -27,7 +27,11 @@ export interface MultiSelectProps {
 
   StartAdornment?: ReactNode
 
-  helperText?: string,
+  helperText?: string
+
+  placeholder?: string
+
+  label?: string
 
   rounded?: 'full' | 'huge' | 'large' | 'medium' | 'small' | 'tiny' | 'none'
 }

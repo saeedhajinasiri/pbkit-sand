@@ -180,4 +180,3 @@ const StartAdornmentTemplate: ComponentStory<typeof MultiSelect> = (args: MultiS
   );
 }
 export const StartAdornment = StartAdornmentTemplate.bind({});
-

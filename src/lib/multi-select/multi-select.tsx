@@ -1,11 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
 import {MultiSelectProps} from './multi-select.props'
 import classNames from "../../utils/helpers/class-names";
-import {COLORS, HOVER_COLORS, ROUNDED, SELECTED_ITEMS_TEXT, SELECTED_ITEMS_ICON, SIZES, VARIANTS, INPUT_TEXT} from "./multi-select.style";
+import {COLORS, HOVER_COLORS, ROUNDED, SELECTED_ITEMS_ICON, SIZES, VARIANTS, TEXT_SIZE} from "./multi-select.style";
 import {Checkbox, Div, Text} from "@pezeshk-book/ui-kit";
 import Tag from '../tag/tag'
 
-export const MultiSelect = ({size = 'medium', label = 'write', placeholder, optionsList, value, onChange, id, text, color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium'}: MultiSelectProps) => {
+export const MultiSelect = ({size = 'medium', label = "label", placeholder, optionsList, value, onChange, id, text, color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium'}: MultiSelectProps) => {
   let newOptionsList: any = {};
   optionsList && optionsList.length && optionsList.map(item => {
     newOptionsList = Object.assign({}, newOptionsList, {
@@ -67,14 +67,14 @@ export const MultiSelect = ({size = 'medium', label = 'write', placeholder, opti
   };
 
   return (
-    <Div className={'flex flex-col items-start justify-between relative w-full h-auto'}>
+    <Div className={'flex flex-col items-start relative w-full h-auto'}>
       <Div ref={wrapperRef} className={'relative w-full'}>
         <Div
           onClick={handleListDisplay}
           className={classNames(
-            'flex items-center w-full border cursor-pointer px-3 cursor-text',
+            'flex items-center w-full border px-3 cursor-text',
             !disabled && (`${VARIANTS[variant]}`),
-            disabled ? 'border-0 text-control-200 !cursor-not-allowed !bg-control-100' : (error ? `border-danger !text-danger ${variant === 'filled' ? '!bg-danger-100 !text-danger-400' : ''}` :
+            disabled ? 'border-0 text-control-200 !cursor-not-allowed !bg-control-100' : (error ? `border-danger !text-danger ${variant === 'filled' && '!bg-danger-100 !text-danger-400'}` :
               (show ? `${COLORS[color]}` : `${variant === 'filled' ? (`${COLORS[color]} border !border-transparent hover:border hover:!border-control-400`) : 'border-control-100 hover:border-control-400'}`)),
             SIZES[size],
             StartAdornment ? 'justify-between' : 'justify-end',
@@ -85,37 +85,35 @@ export const MultiSelect = ({size = 'medium', label = 'write', placeholder, opti
 
           {label ? (
             <span
-              color={'inherit'}
               className={classNames(
                 show || value.length >= 1 ? 'text-m-sm' : 'text-m-base',
-                "select-none h-auto px-2 absolute duration-200 flex items-center",
+                "select-none h-auto px-2 absolute duration-200",
                 StartAdornment ? 'right-8' : 'right-2',
-                show || value.length >= 1 ? `translate-x-0 text-xs  ${variant === 'filled' ? '!top-0 !h-auto !leading-none bg-transparent' : `!right-2 !top-0 translate-y-[-50%] !bg-white rounded-lg border-white `}` : '',
-                disabled ? '!bg-transparent' : (error ? 'text-danger' : (show ? `${COLORS[color]}` : 'text-control-400'))
-              )}
-            >
-  {label}
-</span>
+                show || value.length >= 1 ? `translate-x-0 text-xs  ${variant === 'filled' ? `!top-0 !h-auto !leading-[0.5] bg-transparent ${StartAdornment && '!right-6 '} ` : `!right-2 !top-0 translate-y-[-50%] !bg-white rounded-lg border-white `}` : '',
+                disabled ? '!bg-transparent' : (error ? 'text-danger' : (show ? `${COLORS[color]}` : 'text-control-400')),
+                TEXT_SIZE[size]
+              )}>
+              {label}
+            </span>
           ) : placeholder ? (
             <span
               color={'inherit'}
               className={classNames(
-                "select-none h-auto px-2 absolute duration-200 flex items-center",
-                INPUT_TEXT[size],
-                show || value.length >= 1 ? `hidden` : 'right-2',
+                "h-auto px-2 absolute",
+                TEXT_SIZE[size],
+                show || value.length >= 1 ? `hidden` : `${StartAdornment ? 'right-6' : 'right-2'}`,
                 disabled ? '!bg-transparent' : (error ? 'text-danger' : 'text-control-400')
-              )}
-            >
-                    {placeholder}
-                      </span>
+              )}>
+              {placeholder}
+            </span>
           ) : null}
 
 
-          <Div className={'flex flex-wrap items-center grow w-0 gap-1'}>
+          <Div className={'flex flex-wrap items-center grow w-0 gap-1 my-1'}>
             {value && value.length >= 1 && (
               value.map((item: any) => (
-                <Div className={'px-1 flex flex-wrap items-center select-none gap-1 h-auto'}>
-                  <Tag onChange={handleOptionClick} title={newOptionsList[item][text]} id={newOptionsList[item][id]} rounded={rounded} error={error} disabled={disabled} size={size} color={color} variant={variant} text={text}/>
+                <Div className={'flex flex-wrap items-center select-none gap-1 h-auto'}>
+                  <Tag onChange={handleOptionClick} title={newOptionsList[item][text]} id={newOptionsList[item][id]} rounded={rounded} disabled={disabled} size={size} color={color} variant={variant}/>
                 </Div>
               ))
             )}
@@ -123,7 +121,7 @@ export const MultiSelect = ({size = 'medium', label = 'write', placeholder, opti
               type={'text'}
               readOnly={disabled} dir={'rtl'} ref={inputRef}
               className={classNames(`flex-1 outline-0 min-w-8 bg-transparent`,
-                INPUT_TEXT[size],
+                TEXT_SIZE[size],
                 disabled ? 'cursor-not-allowed' : 'cursor-text'
               )}
               onChange={handleInputChange}
@@ -140,7 +138,7 @@ export const MultiSelect = ({size = 'medium', label = 'write', placeholder, opti
 
         {/*  dropdown*/}
         {searchedItems && searchedItems.length > 0 && typeof searchedItems === 'object' ? (
-          <Div className={classNames(`border-${color} mt-2 flex flex-col absolute block w-full top-full bg-white border text-control-500 rounded-lg shadow-lg p-2`,
+          <Div className={classNames(`border-${color} mt-2 gap-y-1 flex flex-col absolute w-full top-full bg-white border text-control-500 rounded-lg shadow-lg p-2`,
             !disabled && show ? "block h-fit z-10" : "hidden",
           )}
           >
@@ -161,11 +159,11 @@ export const MultiSelect = ({size = 'medium', label = 'write', placeholder, opti
 
                 <Text
                   align={'right'}
-                  type={`regular`}
+                  type={`bold`}
                   typography={'sm'}
                   data-name={option[id]}
                   key={option[id]}
-                  className={classNames(`font-bold py-2 select-none group-hover:!text-white`,
+                  className={classNames(`py-2 group-hover:!text-white`,
                     value && value.includes(option[id]) ? 'text-black' : '!text-control-300'
                   )}>
                   {option[text]}
@@ -175,16 +173,16 @@ export const MultiSelect = ({size = 'medium', label = 'write', placeholder, opti
             ))}
           </Div>
         ) : (
-          <Div className={classNames('mt-2 flex flex-col absolute block w-full top-full bg-white border text-control-500 rounded-lg shadow-lg p-4',
+          <Div className={classNames('mt-2 flex flex-col absolute w-full top-full bg-white border text-control-500 rounded-lg shadow-lg py-2 px-3',
             show ? "block h-fit z-10" : "hidden",
           )}>
-            <Text className={'select-none cursor-default'} color={'grey.400'} typography={'sm'} align={'right'}>آیتمی جهت نمایش وجود ندارد</Text>
+            <Text color={'grey.400'} typography={'sm'} align={'right'}>آیتمی جهت نمایش وجود ندارد</Text>
           </Div>
         )}
 
       </Div>
       {helperText ? (
-        <Div className={'px-3 select-none w-full'}>
+        <Div className={'px-3 w-full'}>
           <Text color={disabled ? 'grey.500' : (error ? 'danger' : 'grey.400')} typography={'xs'}>
             {helperText}
           </Text>
