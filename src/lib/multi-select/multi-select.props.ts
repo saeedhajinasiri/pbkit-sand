@@ -4,8 +4,6 @@ import {ReactNode} from "react";
 export interface MultiSelectProps {
   optionsList: Array<any>
 
-  defaultText?: string
-
   value: Array<string | number>
 
   onChange: (newValue: any) => void
@@ -13,6 +11,10 @@ export interface MultiSelectProps {
   id: number | string
 
   text: string
+
+  placeholder?: string
+
+  label?: string
 
   disabled?: boolean
 
@@ -28,10 +30,6 @@ export interface MultiSelectProps {
   StartAdornment?: ReactNode
 
   helperText?: string
-
-  placeholder?: string
-
-  label?: string
 
   rounded?: 'full' | 'huge' | 'large' | 'medium' | 'small' | 'tiny' | 'none'
 

@@ -36,7 +36,7 @@ export default {
 
 const Template: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) => {
 
-  const [select, setSelect] = useState([5, 3])
+  const [select, setSelect] = useState([])
 
   const handleChange = (e: any) => {
     setSelect(e)
@@ -46,11 +46,11 @@ const Template: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) =>
     <MultiSelect
       variant={args.variant}
       color={args.color}
-      label={args.defaultText}
+      label={args.label}
       placeholder={args.placeholder}
       disabled={args.disabled}
       size={args.size}
-      rtl={args.rtl}
+      direction={args.direction}
       {...args}
       optionsList={tempList}
       id={'id'}
@@ -93,11 +93,11 @@ const SizeTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} size={'tiny'} defaultText={'Tiny'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} size={'small'} defaultText={'Small'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} size={'medium'} defaultText={'Medium'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} size={'large'} defaultText={'Large'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} size={'huge'} defaultText={'Huge'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} size={'tiny'} label={'Tiny'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} size={'small'} label={'Small'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} size={'medium'} label={'Medium'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} size={'large'} label={'Large'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} size={'huge'} label={'Huge'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
     </div>
   );
 }
@@ -112,13 +112,13 @@ const RoundedTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectPr
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} rounded={'full'} defaultText={'full'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'huge'} defaultText={'huge'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'large'} defaultText={'large'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'medium'} defaultText={'medium'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'small'} defaultText={'small'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'tiny'} defaultText={'tiny'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'none'} defaultText={'none'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} rounded={'full'} label={'full'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} rounded={'huge'} label={'huge'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} rounded={'large'} label={'large'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} rounded={'medium'} label={'medium'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} rounded={'small'} label={'small'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} rounded={'tiny'} label={'tiny'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} rounded={'none'} label={'none'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
     </div>
   );
 }
@@ -132,7 +132,7 @@ const HelperTextTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelec
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} helperText={'this is an example for helper text'} defaultText={'helper text'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} helperText={'this is an example for helper text'} label={'helper text'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
     </div>
   );
 }
@@ -146,8 +146,8 @@ const DisabledTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectP
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} disabled={true} defaultText={'Disabled = True'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} disabled={false} defaultText={'Disabled = False'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} disabled={true} label={'Disabled = True'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} disabled={false} label={'Disabled = False'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
     </div>
   );
 }
@@ -161,8 +161,8 @@ const VariantTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectPr
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} variant={'filled'} defaultText={'Variant = Filled'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} variant={'outlined'} defaultText={'Variant = Outlined'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} variant={'filled'} label={'Variant = Filled'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect {...args} variant={'outlined'} label={'Variant = Outlined'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
     </div>
   );
 }
@@ -176,7 +176,7 @@ const StartAdornmentTemplate: ComponentStory<typeof MultiSelect> = (args: MultiS
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} defaultText={'with start adornment'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} StartAdornment={<StartAdornmentIcon/>}/>
+      <MultiSelect {...args} label={'with start adornment'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} StartAdornment={<StartAdornmentIcon/>}/>
     </div>
   );
 }
