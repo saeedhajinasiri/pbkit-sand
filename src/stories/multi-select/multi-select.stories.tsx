@@ -36,21 +36,14 @@ export default {
 
 const Template: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) => {
 
-  const [select, setSelect] = useState([])
+  const [select, setSelect] = useState<number[]>([])
 
-  const handleChange = (e: any) => {
+  const handleChange = (e:number[]) => {
     setSelect(e)
   }
 
   return (
     <MultiSelect
-      variant={args.variant}
-      color={args.color}
-      label={args.label}
-      placeholder={args.placeholder}
-      disabled={args.disabled}
-      size={args.size}
-      direction={args.direction}
       {...args}
       optionsList={tempList}
       id={'id'}

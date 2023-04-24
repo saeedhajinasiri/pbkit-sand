@@ -4,6 +4,11 @@ import classNames from "../../utils/helpers/class-names";
 import {COLORS, HOVER_COLORS, ROUNDED, SELECTED_ITEMS_ICON, SIZES, VARIANTS, TEXT_SIZE, DROPDOWN_BORDER_COLOR} from "./multi-select.style";
 import {Checkbox, Div, Text} from "@pezeshk-book/ui-kit";
 import Tag from '../tag/tag'
+import {Lists} from './multi-select.props'
+
+type Item = {
+  [key: string]: any
+}
 
 export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, value, onChange, id, text, color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium', direction = "rtl"}: MultiSelectProps) => {
 
@@ -12,7 +17,7 @@ export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, v
   const inputRef = useRef<HTMLInputElement>(null)
 
   // state
-  const [searchedItems, setSearchedItems] = useState<any>(optionsList)
+  const [searchedItems, setSearchedItems] = useState<Lists[]>(optionsList)
   const [show, setShow] = useState<boolean>(false)
 
   // click outside to close dropdown
@@ -23,7 +28,7 @@ export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, v
     }
   }, [])
 
-  let newOptionsList: any = {};
+  let newOptionsList: Item = {};
   optionsList && optionsList.length && optionsList.map(item => {
     newOptionsList = Object.assign({}, newOptionsList, {
       [item.id]: item
@@ -42,7 +47,7 @@ export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, v
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchedItems(optionsList.filter(a => a[text].includes(event.target.value)))
+    setSearchedItems(optionsList.filter((a: Item) => a[text].includes(event.target.value)))
   };
 
   // prevState => !prevState
@@ -52,7 +57,7 @@ export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, v
   };
 
   // click to setState selected items
-  const handleOptionClick = (id: any): void => {
+  const handleOptionClick = (id: number): void => {
     setShow(false)
     const currentIndex = value.indexOf(id);
     const newChecked = [...value];
@@ -64,8 +69,9 @@ export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, v
     }
     onChange(newChecked);
     if (inputRef.current) {
-      inputRef.current.value = '';
+      inputRef.current.value = ''
     }
+    setSearchedItems(optionsList)
   };
 
   return (
@@ -112,7 +118,7 @@ export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, v
 
           <Div className={'flex flex-wrap items-center grow w-0 gap-1 my-1'}>
             {value && value.length >= 1 && (
-              value.map((item: any) => (
+              value.map((item) => (
                 <Div className={'flex flex-wrap items-center select-none gap-1 h-auto'}>
                   <Tag
                     onChange={handleOptionClick}
