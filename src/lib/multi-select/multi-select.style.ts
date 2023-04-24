@@ -47,12 +47,12 @@ export const VARIANTS = {
   outlined: 'text-grey-light bg-white border flex',
 };
 
-export const SELECTED_ITEMS_TEXT = {
-  tiny: 'text-m-xxxs sm:text-t-xxxs md:text-d-xxxs',
-  small: 'text-m-xxs sm:text-t-xxs md:text-d-xxs',
-  medium: 'text-m-xs sm:text-t-xs md:text-d-xs',
-  large: 'text-m-sm sm:text-t-sm md:text-d-sm',
-  huge: 'text-m-sm sm:text-t-sm md:text-d-sm',
+export const TEXT_SIZE = {
+  tiny: '!text-m-xxs sm:!text-t-xxs md:!text-d-xxs',
+  small: '!text-m-xs sm:!text-t-xxs md:!text-d-xs',
+  medium: '!text-m-sm sm:!text-t-sm md:!text-d-sm',
+  large: '!text-m-sm sm:!text-t-sm md:!text-d-sm',
+  huge: '!text-m-base sm:!text-t-base md:!text-d-base',
 }
 
 export const SELECTED_ITEMS_ICON = {
@@ -62,12 +62,3 @@ export const SELECTED_ITEMS_ICON = {
   large: '16',
   huge: '16',
 }
-
-export const INPUT_TEXT = {
-  tiny: 'text-m-xxxs sm:text-t-xxxs md:text-d-xxxs',
-  small: 'text-m-xxs sm:text-t-xxs md:text-d-xxs',
-  medium: 'text-m-xs sm:text-t-xs md:text-d-xs',
-  large: 'text-m-sm sm:text-t-sm md:text-d-sm',
-  huge: 'text-m-sm sm:text-t-sm md:text-d-sm',
-}
-

@@ -22,11 +22,11 @@ export const ROUNDED = {
 };
 
 export const TITLE_SIZE = {
-  tiny: '!text-m-xxxs sm:!text-t-xxxs md:!text-d-xxxs',
-  small: '!text-m-xxs sm:!text-t-xxs md:!text-d-xxs',
-  medium: '!text-m-xs sm:!text-t-xs md:!text-d-xs',
+  tiny: '!text-m-xxs sm:!text-t-xxs md:!text-d-xxs',
+  small: '!text-m-xs sm:!text-t-xxs md:!text-d-xs',
+  medium: '!text-m-sm sm:!text-t-sm md:!text-d-sm',
   large: '!text-m-sm sm:!text-t-sm md:!text-d-sm',
-  huge: '!text-m-sm sm:!text-t-sm md:!text-d-sm',
+  huge: '!text-m-base sm:!text-t-base md:!text-d-base',
 }
 
 export const ICON_CONTAINER_SIZE = {
@@ -38,18 +38,18 @@ export const ICON_CONTAINER_SIZE = {
 }
 
 export const ICON_SIZE = {
-  tiny: 16,
-  small: 18,
-  medium: 20,
-  large: 22,
-  huge: 24,
+  tiny: 18,
+  small: 20,
+  medium: 22,
+  large: 24,
+  huge: 26,
 }
 
 export const SIZES = {
-  tiny: '!min-h-4 !max-h-4 !h-4',
-  small: '!min-h-5 !max-h-5 !h-5',
-  medium: '!min-h-5 !max-h-5 !h-5',
-  large: '!min-h-6 !max-h-6 !h-6',
-  huge: '!min-h-8 !max-h-8 !h-8',
+  tiny: '!min-h-5 !max-h-5 !h-5',
+  small: '!min-h-6 !max-h-6 !h-6',
+  medium: '!min-h-6 !max-h-6 !h-6',
+  large: '!min-h-8 !max-h-8 !h-8',
+  huge: '!min-h-10 !max-h-10 !h-10',
 }
 
