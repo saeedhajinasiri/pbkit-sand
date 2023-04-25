@@ -13,14 +13,7 @@ const Template: ComponentStory<typeof Tag> = (args: TagProps) => {
 
   return (
     <Tag
-      variant={args.variant}
-      color={args.color}
-      disabled={args.disabled}
-      size={args.size}
-      rounded={args.rounded}
       {...args}
-      id={args.id}
-      title={args.title}
     />
   )
 }
@@ -32,15 +25,15 @@ const ColorTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
   return (
     <div className={'grid grid-cols-2 gap-3'}>
-      <Tag {...args} color={'primary'} title={'title'}/>
-      <Tag {...args} color={'secondary'} title={'title'}/>
-      <Tag {...args} color={'tertiary'} title={'title'}/>
-      <Tag {...args} color={'info'} title={'title'}/>
-      <Tag {...args} color={"danger"} title={'title'}/>
-      <Tag {...args} color={"warning"} title={'title'}/>
-      <Tag {...args} color={"success"} title={'title'}/>
-      <Tag {...args} color={"purple"} title={'title'}/>
-      <Tag {...args} color={"control"} title={'title'}/>
+      <Tag color={'primary'} {...args} />
+      <Tag color={'secondary'} {...args} />
+      <Tag color={'tertiary'} {...args} />
+      <Tag color={'info'} {...args} />
+      <Tag color={"danger"} {...args} />
+      <Tag color={"warning"} {...args} />
+      <Tag color={"success"} {...args} />
+      <Tag color={"purple"} {...args} />
+      <Tag color={"control"} {...args} />
     </div>
   );
 }
@@ -51,11 +44,11 @@ const SizeTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
   return (
     <div className={'flex flex-col gap-8'}>
-      <Tag {...args} size={'tiny'} title={'title'}/>
-      <Tag {...args} size={'small'} title={'title'}/>
-      <Tag {...args} size={'medium'} title={'title'}/>
-      <Tag {...args} size={'large'} title={'title'}/>
-      <Tag {...args} size={'huge'} title={'title'}/>
+      <Tag size={'tiny'} {...args} />
+      <Tag size={'small'} {...args} />
+      <Tag size={'medium'} {...args} />
+      <Tag size={'large'} {...args} />
+      <Tag size={'huge'} {...args} />
     </div>
   );
 }
@@ -67,13 +60,13 @@ const RoundedTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
   return (
     <div className={'flex flex-col gap-8'}>
-      <Tag {...args} rounded={'full'} title={'title'}/>
-      <Tag {...args} rounded={'huge'} title={'title'}/>
-      <Tag {...args} rounded={'large'} title={'title'}/>
-      <Tag {...args} rounded={'medium'} title={'title'}/>
-      <Tag {...args} rounded={'small'} title={'title'}/>
-      <Tag {...args} rounded={'tiny'} title={'title'}/>
-      <Tag {...args} rounded={'none'} title={'title'}/>
+      <Tag rounded={'full'} {...args} />
+      <Tag rounded={'huge'} {...args} />
+      <Tag rounded={'large'} {...args} />
+      <Tag rounded={'medium'} {...args} />
+      <Tag rounded={'small'} {...args} />
+      <Tag rounded={'tiny'} {...args} />
+      <Tag rounded={'none'} {...args} />
     </div>
   );
 }
@@ -85,8 +78,8 @@ const DisabledTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
   return (
     <div className={'flex flex-col gap-8'}>
-      <Tag {...args} disabled={true}/>
-      <Tag {...args} disabled={false}/>
+      <Tag disabled={true} {...args} />
+      <Tag disabled={false} {...args} />
     </div>
   );
 }
@@ -94,11 +87,10 @@ export const Disabled = DisabledTemplate.bind({});
 
 const VariantTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
-
   return (
     <div className={'flex flex-col gap-8'}>
-      <Tag {...args} variant={'filled'}/>
-      <Tag {...args} variant={'outlined'}/>
+      <Tag variant={'filled'} {...args} />
+      <Tag variant={'outlined'} {...args} />
     </div>
   );
 }

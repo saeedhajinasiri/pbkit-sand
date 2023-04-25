@@ -6,23 +6,23 @@ import StartAdornmentIcon from "./start-adornment";
 
 const tempList = [
   {
-    name: 'one',
+    name: 'یک',
     id: 1
   },
   {
-    name: 'two',
+    name: 'دو',
     id: 2
   },
   {
-    name: 'three',
+    name: 'سه',
     id: 3
   },
   {
-    name: 'four',
+    name: 'چهار',
     id: 4
   },
   {
-    name: 'five',
+    name: 'پنج',
     id: 5
   },
 ]
@@ -34,142 +34,140 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof MultiSelect>;
 
-const Template: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) => {
+const Template: ComponentStory<typeof MultiSelect> = (args: Omit<MultiSelectProps, 'optionsList' | 'value'>) => {
 
   const [select, setSelect] = useState<number[]>([])
 
-  const handleChange = (e:number[]) => {
+  const handleChange = (e: number[]): void => {
     setSelect(e)
   }
 
   return (
     <MultiSelect
-      {...args}
       optionsList={tempList}
-      id={'id'}
       value={select}
+      {...args}
       onChange={handleChange}
-      text={'name'}
     />
   )
 }
 
 export const Default = Template.bind({});
 
-const ColorTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) => {
-  const [select, setSelect] = useState([])
+const ColorTemplate: ComponentStory<typeof MultiSelect> = (args: Omit<MultiSelectProps, 'value' | 'optionsList'>) => {
+  const [select, setSelect] = useState<number[]>([])
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: number[]): void => {
     setSelect(e)
   }
   return (
     <div className={'grid grid-cols-2 gap-3'}>
-      <MultiSelect {...args} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} color={'primary'}/>
-      <MultiSelect {...args} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} color={'secondary'}/>
-      <MultiSelect {...args} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} color={'tertiary'}/>
-      <MultiSelect {...args} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} color={'info'}/>
-      <MultiSelect {...args} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} color={"danger"}/>
-      <MultiSelect {...args} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} color={"warning"}/>
-      <MultiSelect {...args} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} color={"success"}/>
-      <MultiSelect {...args} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} color={"purple"}/>
-      <MultiSelect {...args} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} color={"control"}/>
+      <MultiSelect optionsList={tempList} value={select} color={'primary'} {...args} onChange={handleChange}/>
+      <MultiSelect optionsList={tempList} value={select} color={'secondary'} {...args} onChange={handleChange}/>
+      <MultiSelect optionsList={tempList} value={select} color={'tertiary'} {...args} onChange={handleChange}/>
+      <MultiSelect optionsList={tempList} value={select} color={'info'} {...args} onChange={handleChange}/>
+      <MultiSelect optionsList={tempList} value={select} color={"danger"} {...args} onChange={handleChange}/>
+      <MultiSelect optionsList={tempList} value={select} color={"warning"} {...args} onChange={handleChange}/>
+      <MultiSelect optionsList={tempList} value={select} color={"success"} {...args} onChange={handleChange}/>
+      <MultiSelect optionsList={tempList} value={select} color={"purple"} {...args} onChange={handleChange}/>
+      <MultiSelect optionsList={tempList} value={select} color={"control"} {...args} onChange={handleChange}/>
     </div>
   );
 }
 export const Color = ColorTemplate.bind({});
 
-const SizeTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) => {
-  const [select, setSelect] = useState([])
+const SizeTemplate: ComponentStory<typeof MultiSelect> = (args: Omit<MultiSelectProps, 'value' | 'optionsList'>) => {
+  const [select, setSelect] = useState<number[]>([])
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: number[]): void => {
     setSelect(e)
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} size={'tiny'} label={'Tiny'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} size={'small'} label={'Small'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} size={'medium'} label={'Medium'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} size={'large'} label={'Large'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} size={'huge'} label={'Huge'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect size={'tiny'} label={'خیلی کوچک'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect size={'small'} label={'کوچک'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect size={'medium'} label={'متوسط'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect size={'large'} label={'بزرگ'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect size={'huge'} label={'خیلی بزرگ'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
     </div>
   );
 }
 export const Size = SizeTemplate.bind({});
 
 
-const RoundedTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) => {
-  const [select, setSelect] = useState([])
+const RoundedTemplate: ComponentStory<typeof MultiSelect> = (args: Omit<MultiSelectProps, 'value' | 'optionsList'>) => {
+  const [select, setSelect] = useState<number[]>([])
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: number[]): void => {
     setSelect(e)
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} rounded={'full'} label={'full'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'huge'} label={'huge'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'large'} label={'large'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'medium'} label={'medium'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'small'} label={'small'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'tiny'} label={'tiny'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} rounded={'none'} label={'none'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect rounded={'full'} label={'کامل'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect rounded={'huge'} label={'خیلی بزرگ'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect rounded={'large'} label={'بزرگ'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect rounded={'medium'} label={'متوسط'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect rounded={'small'} label={'کوچک'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect rounded={'tiny'} label={'خیلی کوچک'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect rounded={'none'} label={'هیچی'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
     </div>
   );
 }
 export const Rounded = RoundedTemplate.bind({});
 
-const HelperTextTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) => {
-  const [select, setSelect] = useState([])
+const HelperTextTemplate: ComponentStory<typeof MultiSelect> = (args: Omit<MultiSelectProps, 'value' | 'optionsList'>) => {
+  const [select, setSelect] = useState<number[]>([])
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: number[]): void => {
     setSelect(e)
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} helperText={'this is an example for helper text'} label={'helper text'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect helperText={'این یک مثال برای این قسمت است'} label={'متن پیش فرض'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
     </div>
   );
 }
 export const HelperText = HelperTextTemplate.bind({});
 
-const DisabledTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) => {
-  const [select, setSelect] = useState([])
+const DisabledTemplate: ComponentStory<typeof MultiSelect> = (args: Omit<MultiSelectProps, 'value' | 'optionsList'>) => {
+  const [select, setSelect] = useState<number[]>([])
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: number[]): void => {
     setSelect(e)
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} disabled={true} label={'Disabled = True'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} disabled={false} label={'Disabled = False'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect disabled={true} label={'غیرفعال'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect disabled={false} label={'فعال'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
     </div>
   );
 }
 export const Disabled = DisabledTemplate.bind({});
 
-const VariantTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) => {
-  const [select, setSelect] = useState([])
+const VariantTemplate: ComponentStory<typeof MultiSelect> = (args: Omit<MultiSelectProps, 'value' | 'optionsList'>) => {
+  const [select, setSelect] = useState<number[]>([])
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: number[]): void => {
     setSelect(e)
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} variant={'filled'} label={'Variant = Filled'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
-      <MultiSelect {...args} variant={'outlined'} label={'Variant = Outlined'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'}/>
+      <MultiSelect variant={'filled'} label={'Variant = Filled'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect variant={'outlined'} label={'Variant = Outlined'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
     </div>
   );
 }
 export const Variant = VariantTemplate.bind({});
 
-const StartAdornmentTemplate: ComponentStory<typeof MultiSelect> = (args: MultiSelectProps) => {
-  const [select, setSelect] = useState([])
+const StartAdornmentTemplate: ComponentStory<typeof MultiSelect> = (args: Omit<MultiSelectProps, 'value' | 'optionsList'>) => {
+  const [select, setSelect] = useState<number[]>([])
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: number[]): void => {
     setSelect(e)
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect {...args} label={'with start adornment'} optionsList={tempList} id={'id'} value={select} onChange={handleChange} text={'name'} StartAdornment={<StartAdornmentIcon/>}/>
+      <MultiSelect label={'آیکون سفارشی'} optionsList={tempList} value={select} StartAdornment={<StartAdornmentIcon/>} {...args} onChange={handleChange}/>
     </div>
   );
 }
