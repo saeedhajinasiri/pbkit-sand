@@ -3,6 +3,7 @@ import {ComponentMeta, ComponentStory} from '@storybook/react';
 import {MultiSelect} from './multi-select';
 import {MultiSelectProps} from '../../lib/multi-select/multi-select.props'
 import StartAdornmentIcon from "./start-adornment";
+import {Div, Text} from "@pezeshk-book/ui-kit";
 
 const tempList = [
   {
@@ -62,15 +63,69 @@ const ColorTemplate: ComponentStory<typeof MultiSelect> = (args: Omit<MultiSelec
   }
   return (
     <div className={'grid grid-cols-2 gap-3'}>
+      <Div className={'flex flex-col'}>
+        <Text color={'primary'} align={'right'} typography={'sm'}>
+          Primary
+        </Text>
       <MultiSelect optionsList={tempList} value={select} color={'primary'} {...args} onChange={handleChange}/>
-      <MultiSelect optionsList={tempList} value={select} color={'secondary'} {...args} onChange={handleChange}/>
-      <MultiSelect optionsList={tempList} value={select} color={'tertiary'} {...args} onChange={handleChange}/>
-      <MultiSelect optionsList={tempList} value={select} color={'info'} {...args} onChange={handleChange}/>
-      <MultiSelect optionsList={tempList} value={select} color={"danger"} {...args} onChange={handleChange}/>
-      <MultiSelect optionsList={tempList} value={select} color={"warning"} {...args} onChange={handleChange}/>
-      <MultiSelect optionsList={tempList} value={select} color={"success"} {...args} onChange={handleChange}/>
-      <MultiSelect optionsList={tempList} value={select} color={"purple"} {...args} onChange={handleChange}/>
-      <MultiSelect optionsList={tempList} value={select} color={"control"} {...args} onChange={handleChange}/>
+      </Div>
+
+      <Div className={'flex flex-col'}>
+        <Text color={'secondary'} align={'right'} typography={'sm'}>
+          Secondary
+        </Text>
+        <MultiSelect optionsList={tempList} value={select} color={'secondary'} {...args} onChange={handleChange}/>
+      </Div>
+
+      <Div className={'flex flex-col'}>
+        <Text color={'tertiary'} align={'right'} typography={'sm'}>
+          tertiary
+        </Text>
+        <MultiSelect optionsList={tempList} value={select} color={'tertiary'} {...args} onChange={handleChange}/>
+      </Div>
+
+      <Div className={'flex flex-col'}>
+        <Text color={'info'} align={'right'} typography={'sm'}>
+          Info
+        </Text>
+        <MultiSelect optionsList={tempList} value={select} color={'info'} {...args} onChange={handleChange}/>
+      </Div>
+
+      <Div className={'flex flex-col'}>
+        <Text color={'danger'} align={'right'} typography={'sm'}>
+          Danger
+        </Text>
+        <MultiSelect optionsList={tempList} value={select} color={'danger'} {...args} onChange={handleChange}/>
+      </Div>
+
+      <Div className={'flex flex-col'}>
+        <Text color={'warning'} align={'right'} typography={'sm'}>
+          Warning
+        </Text>
+        <MultiSelect optionsList={tempList} value={select} color={'warning'} {...args} onChange={handleChange}/>
+      </Div>
+
+      <Div className={'flex flex-col'}>
+        <Text color={'success'} align={'right'} typography={'sm'}>
+          Success
+        </Text>
+        <MultiSelect optionsList={tempList} value={select} color={'success'} {...args} onChange={handleChange}/>
+      </Div>
+
+      <Div className={'flex flex-col'}>
+        <Text color={'purple'} align={'right'} typography={'sm'}>
+          Purple
+        </Text>
+        <MultiSelect optionsList={tempList} value={select} color={'purple'} {...args} onChange={handleChange}/>
+      </Div>
+
+      <Div className={'flex flex-col'}>
+        <Text color={'control'} align={'right'} typography={'sm'}>
+          Control
+        </Text>
+        <MultiSelect optionsList={tempList} value={select} color={'control'} {...args} onChange={handleChange}/>
+      </Div>
+
     </div>
   );
 }
@@ -137,8 +192,8 @@ const DisabledTemplate: ComponentStory<typeof MultiSelect> = (args: Omit<MultiSe
   }
   return (
     <div className={'flex flex-col gap-8'}>
-      <MultiSelect disabled={true} label={'غیرفعال'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
-      <MultiSelect disabled={false} label={'فعال'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect disabled={true} label={'قابلیت ویرایش : غیرفعال'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
+      <MultiSelect disabled={false} label={'قابلیت ویرایش : فعال'} optionsList={tempList} value={select} {...args} onChange={handleChange}/>
     </div>
   );
 }

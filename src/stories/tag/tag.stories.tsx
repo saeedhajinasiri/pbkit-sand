@@ -2,6 +2,7 @@ import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import {Tag} from './tag';
 import {TagProps} from '../../lib/tag/tag.props'
+import {Div, Text} from "@pezeshk-book/ui-kit";
 
 export default {
   title: 'PB Kit/Atoms/Tag',
@@ -25,15 +26,70 @@ const ColorTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
   return (
     <div className={'grid grid-cols-2 gap-3'}>
-      <Tag color={'primary'} {...args} />
-      <Tag color={'secondary'} {...args} />
-      <Tag color={'tertiary'} {...args} />
-      <Tag color={'info'} {...args} />
-      <Tag color={"danger"} {...args} />
-      <Tag color={"warning"} {...args} />
-      <Tag color={"success"} {...args} />
-      <Tag color={"purple"} {...args} />
-      <Tag color={"control"} {...args} />
+
+      <Div className={'flex items-center gap-x-4'}>
+        <Text color={'primary'} typography={'base'}>
+          Primary :
+        </Text>
+        <Tag color={'primary'} {...args} />
+      </Div>
+
+      <Div className={'flex items-center gap-x-4'}>
+        <Text color={'secondary'} typography={'base'}>
+          Secondary :
+        </Text>
+        <Tag color={'secondary'} {...args} />
+      </Div>
+
+      <Div className={'flex items-center gap-x-4'}>
+        <Text color={'tertiary'} typography={'base'}>
+          Tertiary :
+        </Text>
+        <Tag color={'tertiary'} {...args} />
+      </Div>
+
+      <Div className={'flex items-center gap-x-4'}>
+        <Text color={'info'} typography={'base'}>
+          Info :
+        </Text>
+        <Tag color={'info'} {...args} />
+      </Div>
+
+      <Div className={'flex items-center gap-x-4'}>
+        <Text color={'danger'} typography={'base'}>
+          Danger :
+        </Text>
+        <Tag color={'danger'} {...args} />
+      </Div>
+
+      <Div className={'flex items-center gap-x-4'}>
+        <Text color={'warning'} typography={'base'}>
+          Warning :
+        </Text>
+        <Tag color={'warning'} {...args} />
+      </Div>
+
+      <Div className={'flex items-center gap-x-4'}>
+        <Text color={'success'} typography={'base'}>
+          Success :
+        </Text>
+        <Tag color={'success'} {...args} />
+      </Div>
+
+      <Div className={'flex items-center gap-x-4'}>
+        <Text color={'purple'} typography={'base'}>
+          Purple :
+        </Text>
+        <Tag color={'purple'} {...args} />
+      </Div>
+
+      <Div className={'flex items-center gap-x-4'}>
+        <Text color={'control'} typography={'base'}>
+          Control :
+        </Text>
+        <Tag color={'control'} {...args} />
+      </Div>
+
     </div>
   );
 }
@@ -44,11 +100,42 @@ const SizeTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
   return (
     <div className={'flex flex-col gap-8'}>
-      <Tag size={'tiny'} {...args} />
-      <Tag size={'small'} {...args} />
-      <Tag size={'medium'} {...args} />
-      <Tag size={'large'} {...args} />
-      <Tag size={'huge'} {...args} />
+
+      <Div className={'flex gap-x-4 items-center'}>
+        <Text typography={'base'}>
+          اندازه تگ : خیلی کوچک
+        </Text>
+        <Tag size={'tiny'} {...args} />
+      </Div>
+
+      <Div className={'flex gap-x-4 items-center'}>
+        <Text typography={'base'}>
+          اندازه تگ : کوچک
+        </Text>
+        <Tag size={'small'} {...args} />
+      </Div>
+
+      <Div className={'flex gap-x-4 items-center'}>
+        <Text typography={'base'}>
+          اندازه تگ : متوسط
+        </Text>
+        <Tag size={'medium'} {...args} />
+      </Div>
+
+      <Div className={'flex gap-x-4 items-center'}>
+        <Text typography={'base'}>
+          اندازه تگ : بزرگ
+        </Text>
+        <Tag size={'large'} {...args} />
+      </Div>
+
+      <Div className={'flex gap-x-4 items-center'}>
+        <Text typography={'base'}>
+          اندازه تگ : خیلی بزرگ
+        </Text>
+        <Tag size={'huge'} {...args} />
+      </Div>
+
     </div>
   );
 }
@@ -89,8 +176,16 @@ const VariantTemplate: ComponentStory<typeof Tag> = (args: TagProps) => {
 
   return (
     <div className={'flex flex-col gap-8'}>
-      <Tag variant={'filled'} {...args} />
-      <Tag variant={'outlined'} {...args} />
+      <Div className={'flex gap-x-4 items-center'}>
+        <Text typography={'base'}>filled : </Text>
+        <Tag variant={'filled'} {...args} />
+      </Div>
+
+      <Div className={'flex gap-x-4 items-center'}>
+        <Text typography={'base'}>outlined : </Text>
+        <Tag variant={'outlined'} {...args} />
+      </Div>
+
     </div>
   );
 }

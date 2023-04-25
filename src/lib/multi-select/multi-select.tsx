@@ -10,7 +10,7 @@ type Item = {
   [key: string]: any
 }
 
-export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, value, onChange, id = "id", text = "name", color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium', direction = "rtl"}: MultiSelectProps) => {
+export const MultiSelect = ({size = 'medium', label, placeholder="متن مورد نظر را وارد کنید", optionsList, value, onChange, id = "id", text = "name", color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium', direction = "rtl"}: MultiSelectProps) => {
 
   // refs
   const wrapperRef = useRef<HTMLDivElement>(null);
