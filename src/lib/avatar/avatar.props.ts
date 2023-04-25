@@ -4,8 +4,12 @@ export interface AvatarProps {
 
   className?: string
 
-  size?: 'small' | 'medium' | 'large'
+  size?: 'tiny' | 'small' | 'medium' | 'large' | 'huge' | 'whacking'
 
-  src?: string
+  shape?: 'rounded' | 'rectangle'
+
+  position?: 'topRight' | 'topLeft' | 'bottomRight' | 'bottomLeft'
+
+  src?: any
 
 }
