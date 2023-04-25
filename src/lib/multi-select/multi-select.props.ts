@@ -6,7 +6,7 @@ export interface MultiSelectProps {
 
   value: number[]
 
-  onChange: (newValue: any) => void
+  onChange: (newValue: number[]) => void
 
   id: number | string
 
@@ -41,6 +41,7 @@ export type Variant = 'outlined' | 'filled';
 export interface MultiSelectPropsColorOverrides {
 
 }
+
 export interface Lists {
   id: number | string
   name: string

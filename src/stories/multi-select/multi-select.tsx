@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomSelect from '../../lib/multi-select/multi-select'
+import CustomMultiSelect from '../../lib/multi-select/multi-select'
 import {MultiSelectProps} from "../../lib/multi-select/multi-select.props";
 
 /**
@@ -7,6 +7,6 @@ import {MultiSelectProps} from "../../lib/multi-select/multi-select.props";
  */
 export const MultiSelect = ({...props}: MultiSelectProps) => {
   return (
-    <CustomSelect {...props}/>
+    <CustomMultiSelect {...props}/>
   );
 };

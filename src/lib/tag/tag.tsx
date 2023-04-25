@@ -4,9 +4,9 @@ import classNames from "../../utils/helpers/class-names";
 import {COLORS, ICON_CONTAINER_SIZE, ICON_SIZE, ROUNDED, SIZES, TITLE_SIZE} from "./tag.style";
 import {Div, Text} from "@pezeshk-book/ui-kit";
 
-export const Tag = ({id, title = "title", disabled, size = "medium", rounded = "medium", color = "primary", variant, onChange}: TagProps) => {
+export const Tag = ({id, title = "عنوان", disabled, size = "medium", rounded = "medium", color = "primary", variant, onChange}: TagProps) => {
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     onChange(id);
   }
 

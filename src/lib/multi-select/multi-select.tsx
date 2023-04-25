@@ -10,7 +10,7 @@ type Item = {
   [key: string]: any
 }
 
-export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, value, onChange, id, text, color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium', direction = "rtl"}: MultiSelectProps) => {
+export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, value, onChange, id = "id", text = "name", color = 'primary', variant = 'outlined', disabled, error, StartAdornment, helperText, rounded = 'medium', direction = "rtl"}: MultiSelectProps) => {
 
   // refs
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -46,12 +46,12 @@ export const MultiSelect = ({size = 'medium', label, placeholder, optionsList, v
     }
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchedItems(optionsList.filter((a: Item) => a[text].includes(event.target.value)))
   };
 
   // prevState => !prevState
-  const handleListDisplay = () => {
+  const handleListDisplay = (): void => {
     inputRef.current && inputRef.current.value != '' ? setShow(true) : setShow(prev => !prev);
     inputRef.current && inputRef.current.focus()
   };
