@@ -11,27 +11,6 @@ export const COLORS = {
   inherit: 'bg-transparent hover:bg-transparent'
 };
 
-export const SIZES = {
-  huge: 'h-14 md:h-16',
-  large: 'h-12 md:h-14',
-  medium: 'h-10 md:h-12',
-  small: 'h-8 md:h-10',
-  tiny: 'h-6 md:h-8',
-}
-
-export const HOVER_COLORS = {
-  primary: 'hover:bg-primary hover:text-white',
-  danger: 'hover:bg-danger hover:text-white',
-  warning: 'hover:bg-warning hover:text-white',
-  secondary: 'hover:bg-secondary hover:text-white',
-  control: 'hover:bg-control hover:text-white',
-  purple: 'hover:bg-purple hover:text-white',
-  tertiary: 'hover:bg-tertiary hover:text-white',
-  success: 'hover:bg-success hover:text-white',
-  info: 'hover:bg-info hover:text-white',
-  inherit: 'bg-transparent hover:bg-transparent'
-};
-
 export const ROUNDED = {
   full: 'rounded-full',
   huge: 'rounded-3xl',
@@ -42,7 +21,35 @@ export const ROUNDED = {
   none: 'rounded-none',
 };
 
-export const VARIANTS = {
-  filled: 'text-m-sm md:text-d-sm flex',
-  outlined: 'text-grey-light bg-white border flex',
-};
+export const TITLE_SIZE = {
+  tiny: '!text-m-xxs sm:!text-t-xxs md:!text-d-xxs',
+  small: '!text-m-xs sm:!text-t-xxs md:!text-d-xs',
+  medium: '!text-m-sm sm:!text-t-sm md:!text-d-sm',
+  large: '!text-m-sm sm:!text-t-sm md:!text-d-sm',
+  huge: '!text-m-base sm:!text-t-base md:!text-d-base',
+}
+
+export const ICON_CONTAINER_SIZE = {
+  tiny: '!min-h-3 !max-h-3 !h-3 w-3',
+  small: '!min-h-4 !max-h-4 !h-4 w-4',
+  medium: '!min-h-4 !max-h-4 !h-4 w-4',
+  large: '!min-h-5 !max-h-5 !h-5 w-5',
+  huge: '!min-h-6 !max-h-6 !h-6 w-6',
+}
+
+export const ICON_SIZE = {
+  tiny: 18,
+  small: 20,
+  medium: 22,
+  large: 24,
+  huge: 26,
+}
+
+export const SIZES = {
+  tiny: '!min-h-5 !max-h-5 !h-5',
+  small: '!min-h-6 !max-h-6 !h-6',
+  medium: '!min-h-6 !max-h-6 !h-6',
+  large: '!min-h-8 !max-h-8 !h-8',
+  huge: '!min-h-10 !max-h-10 !h-10',
+}
+
