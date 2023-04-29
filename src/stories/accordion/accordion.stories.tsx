@@ -4,7 +4,7 @@ import {Accordion} from './accordion';
 import {AccordionDetails} from './accordion-details'
 import {AccordionSummary} from './accordion-summary'
 import {AccordionProps} from "../../lib/accordion/accordion.props";
-import Text from "../../lib/text";
+import {Text} from "@pezeshk-book/ui-kit";
 
 const tempIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16.431" height="8.226">
   <path d="M7.5 0a.727.727 0 0 1 .67.423.657.657 0 0 1-.157.746L2.086 6.764a1.973 1.973 0 0 0 0 2.9l5.927 5.595a.658.658 0 0 1 0 .968.756.756 0 0 1-1.026 0L1.06 10.636a3.292 3.292 0 0 1 0-4.84L6.987.2A.748.748 0 0 1 7.5 0z" transform="rotate(-90 4.113 4.113)" fill={"#707070"}/>
