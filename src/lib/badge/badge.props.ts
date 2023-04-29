@@ -2,9 +2,12 @@ import {ReactNode} from "react";
 import {OverridableStringUnion, Colors} from "../../types";
 
 export interface AnchorOriginProps {
-  vertical: 'top' | 'bottom',
   horizontal: 'left' | 'right',
+  vertical: 'top' | 'bottom',
 }
+
+export type AnchorSituation ='inner' | 'outer'
+
 
 export interface BadgeProps {
   children: ReactNode
@@ -25,6 +28,8 @@ export interface BadgeProps {
   shape?: Shape
 
   className?: string
+
+  anchorSituation?: AnchorSituation
 }
 
 export interface BadgePropsColorOverrides {
@@ -32,5 +37,5 @@ export interface BadgePropsColorOverrides {
 }
 
 export type Variant = 'standard' | 'dot';
-export type Size = 'tiny' | 'small' | 'medium' | 'large' | 'huge';
+export type Size = 'xxs' | 'xs' | 'sm' | 'base' | 'lg' | 'xl';
 export type Shape = "rectangle" | 'rounded'

@@ -1,15 +1,18 @@
+import { BadgeProps } from "../badge/badge.props"
+
 export interface AvatarProps {
 
   alt: string
 
   className?: string
 
-  size?: 'tiny' | 'small' | 'medium' | 'large' | 'huge' | 'whacking'
+  size?: 'xxs' | 'xs' | 'sm' | 'base' | 'lg' | 'xl'
 
-  shape?: 'rounded' | 'rectangle'
+  rounded?: 'none' | 'tiny' | 'small' | 'medium' | 'large' | 'huge' | 'full'
 
-  position?: 'topRight' | 'topLeft' | 'bottomRight' | 'bottomLeft'
+  isOnline?: boolean
 
-  src?: any
+  src?: string
 
+  BadgeProps?: BadgeProps
 }
