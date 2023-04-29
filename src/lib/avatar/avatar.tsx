@@ -1,50 +1,57 @@
 import React from 'react'
 import classNames from "../../utils/helpers/class-names";
 import {AvatarProps} from "./avatar.props";
-import {AVATAR_SHAPE, SIZES, STATUS_POSITION, STATUS_SIZES} from './avatar.style';
+import {AVATAR_SHAPE, AVATAR_SIZES} from './avatar.style';
 import {Div, Text} from "@pezeshk-book/ui-kit";
+import Badge from '../badge/badge'
 
-export const Avatar = ({className, alt = 'آواتار', size = 'medium', shape = "rounded", position = "topRight", src , ...rest}: AvatarProps) => {
-
+export const Avatar = ({className, alt = 'آواتار', size = 'base', rounded = "medium",isOnline= true, src, BadgeProps, ...rest}: AvatarProps) => {
+  let Children = (
+    <img
+      className={classNames('rounded-full',
+        className,
+        AVATAR_SIZES[size],
+        AVATAR_SHAPE[rounded]
+      )}
+      src={src}
+      alt={alt}
+      loading="lazy"
+      {...rest}
+    />
+  )
   if (!src) {
-    return (
+    Children = (
       <Div
-        className={classNames('relative flex items-center justify-center border',
-          SIZES[size],
-          AVATAR_SHAPE[shape]
+        className={classNames('flex items-center justify-center border border-control-100 shadow',
+          className,
+          AVATAR_SIZES[size],
+          AVATAR_SHAPE[rounded]
         )}>
-        <Text typography={'base'} type={'regular'}>
+
+        <Text
+          type={'regular'}
+          typography={size}
+        >
           {alt.charAt(0)}
         </Text>
-        <svg
-          className={classNames('absolute',
-            STATUS_POSITION[position]
-          )}
-          width={STATUS_SIZES[size]} height={STATUS_SIZES[size]} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="1" y="1" width="14" height="14" rx="7" fill="#4AD15F" stroke="#EBEBEB" strokeWidth="2"/>
-        </svg>
       </Div>
     )
   }
 
-  return (
-    <Div className={'relative'}>
-      <img className={classNames('rounded-full',
-        className,
-        SIZES[size],
-        AVATAR_SHAPE[shape]
-      )} alt={alt} src={src} {...rest} />
+  if (isOnline) {
+    return (
+      <Badge
+        variant={"dot"}
+        badgeContent={0}
+        anchorSituation={'inner'}
+        size={size}
+        {...BadgeProps}
+        children={Children}
+      />
+    )
+  }
 
-      <svg
-        className={classNames('absolute',
-          STATUS_POSITION[position]
-        )}
-        width={STATUS_SIZES[size]} height={STATUS_SIZES[size]} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="14" height="14" rx="7" fill="#4AD15F" stroke="#EBEBEB" strokeWidth="2"/>
-      </svg>
-
-    </Div>
-  )
+  return (Children)
 }
 
 export default Avatar;
