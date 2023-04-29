@@ -1,5 +1,3 @@
-import {AnchorOriginProps, Shape, Size, Variant} from './badge.props'
-
 export const COLORS = {
   primary: 'bg-primary border-primary text-primary-50 hover:bg-primary-dark',
   danger: 'bg-danger border-danger text-danger-50 hover:bg-danger-dark',
@@ -13,54 +11,20 @@ export const COLORS = {
   inherit: 'bg-inherit border-inherit text-inherit'
 };
 
-/**
- *
- * @param size
- * @param shape
- * @param variant
- * @constructor
- */
-export const SHAPES = ({size, shape, variant}: { size: Size, shape: Shape, variant: Variant }) => {
-  if (variant === 'dot') {
-    return 'w-2 h-2 p-0 rounded-full';
-  }
-  let className = 'rounded-lg';
-  if (shape === 'rounded') {
-    className = 'rounded-full'
-  }
-  if (size === 'tiny') {
-    className = `min-w-[12px] h-3 p-0 px-1 ${className}`;
-  } else if (size === 'small') {
-    className = `min-w-[16px] h-4 p-0 px-1 ${className}`;
-  } else if (size === 'medium') {
-    className = `min-w-[20px] h-5 p-0 px-1 ${className}`;
-  } else if (size === 'large') {
-    className = `min-w-[24px] h-6 p-0 px-1 ${className}`;
-  } else if (size === 'huge') {
-    className = `min-w-[32px] h-8 p-0 px-1 ${className}`;
-  }
-
-  return className;
+export const DOT = {
+  xxs: 'min-w-2 w-2 h-2 border !border-control-100',
+  xs: 'min-w-3 w-3 h-3 border border-2 !border-control-100',
+  sm: 'min-w-3 w-3 h-3 border border-2 !border-control-100',
+  base: 'min-w-4 w-4 h-4 border border-2 !border-control-100',
+  lg: 'min-w-4 w-4 h-4 border border-2 !border-control-100',
+  xl: 'min-w-5 w-5 h-5 border border-2 !border-control-100',
 }
 
-/**
- *
- * @param vertical
- * @param horizontal
- * @constructor
- */
-export const POSITIONS = ({vertical, horizontal}: AnchorOriginProps) => {
-  let translateYClassname = '';
-  let translateXClassname = '';
-  if (vertical === 'top') {
-    translateYClassname = 'top-0 -translate-y-1/2';
-  } else {
-    translateYClassname = 'bottom-0 translate-y-1/2';
-  }
-  if (horizontal === 'left') {
-    translateXClassname = 'left-0 -translate-x-1/2';
-  } else {
-    translateXClassname = 'right-0 translate-x-1/2';
-  }
-  return `${translateYClassname} ${translateXClassname}`;
+export const STANDARD = {
+  xxs: 'min-w-3 w-3 h-3',
+  xs: 'min-w-4 w-4 h-4',
+  sm: 'min-w-5 w-5 h-5',
+  base: 'min-w-6 w-6 h-6',
+  lg: 'min-w-8 w-8 h-8',
+  xl: 'min-w-9 w-9 h-9',
 }
