@@ -18,7 +18,7 @@ export const Badge = (props: BadgeProps) => {
     anchorOrigin = {vertical: 'top', horizontal: 'right'}
   } = props;
 
-  const content = variant !== 'dot' ? (max < badgeContent ? `${max}+` : badgeContent) : "";
+  const content:string | number = variant !== 'dot' ? (max < badgeContent ? `${max}+` : badgeContent) : "";
   return (
     <div className={classNames('inline-flex relative shrink-0', className)}>
       {children}
