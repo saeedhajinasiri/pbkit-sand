@@ -1,9 +1,8 @@
 import React from 'react';
 import {BadgeProps} from './badge.props'
 import classNames from "../../utils/helpers/class-names";
-import {COLORS, POSITIONS, SHAPES} from "./badge.style";
+import {COLORS, DOT, STANDARD} from "./badge.style";
 import {Text} from "@pezeshk-book/ui-kit";
-
 
 export const Badge = (props: BadgeProps) => {
   const {
@@ -12,8 +11,9 @@ export const Badge = (props: BadgeProps) => {
     badgeContent,
     max = badgeContent,
     color = "primary",
-    size = 'medium',
+    size = 'base',
     shape = 'rounded',
+    anchorSituation = 'outer',
     className,
     anchorOrigin = {vertical: 'top', horizontal: 'right'}
   } = props;
@@ -26,11 +26,17 @@ export const Badge = (props: BadgeProps) => {
         color={"inherit"}
         typography={"xxs"}
         className={classNames(
-          'z-index[4] flex flex-wrap flex-row-reverse justify-center content-center items-center absolute align-middle scale-100',
+          'absolute flex flex-row-reverse justify-center items-center rounded-full',
           COLORS[color],
-          SHAPES({shape: shape, size: size, variant: variant}),
-          POSITIONS(anchorOrigin)
-        )}>{content}</Text>
+          variant === 'dot' ? DOT[size] : shape === 'rounded' ? STANDARD[size] : `${STANDARD[size]}  !rounded-lg`,
+          anchorSituation === 'inner' ? (
+            `${anchorOrigin.vertical === 'top' ? 'top-0' : 'bottom-0'} ${anchorOrigin.horizontal === 'right' ? 'right-0' : 'left-0'}`
+          ) : (
+            `${anchorOrigin.vertical === 'top' ? 'top-0 -translate-y-1/2' : 'bottom-0 translate-y-1/2'} ${anchorOrigin.horizontal === 'right' ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'}`
+          )
+        )}>
+        {content}
+      </Text>
     </div>
   )
 };
