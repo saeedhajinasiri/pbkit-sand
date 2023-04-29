@@ -27,9 +27,11 @@ const SizeTemplate: ComponentStory<typeof Avatar> = ({...args}: AvatarProps) => 
         <Avatar size={'xxs'} {...args}/>
       </Wrapper>
       <Wrapper title={'XS'}>
-        <Avatar size={'xs'} {...args}/></Wrapper>
+        <Avatar size={'xs'} {...args}/>
+      </Wrapper>
       <Wrapper title={'Sm'}>
-        <Avatar size={'sm'} {...args}/></Wrapper>
+        <Avatar size={'sm'} {...args}/>
+      </Wrapper>
       <Wrapper title={'Base'}>
         <Avatar size={'base'} {...args}/>
       </Wrapper>

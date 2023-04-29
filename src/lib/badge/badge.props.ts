@@ -6,7 +6,7 @@ export interface AnchorOriginProps {
   vertical: 'top' | 'bottom',
 }
 
-export type AnchorSituation ='inner' | 'outer'
+export type AnchorSituation = 'inner' | 'outer'
 
 
 export interface BadgeProps {

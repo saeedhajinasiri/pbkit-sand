@@ -18,7 +18,7 @@ export const Badge = (props: BadgeProps) => {
     anchorOrigin = {vertical: 'top', horizontal: 'right'}
   } = props;
 
-  const content:string | number = variant !== 'dot' ? (max < badgeContent ? `${max}+` : badgeContent) : "";
+  const content: string | number = variant !== 'dot' ? (max < badgeContent ? `${max}+` : badgeContent) : "";
   return (
     <div className={classNames('inline-flex relative shrink-0', className)}>
       {children}
@@ -28,7 +28,7 @@ export const Badge = (props: BadgeProps) => {
         className={classNames(
           'absolute flex flex-row-reverse justify-center items-center rounded-full',
           COLORS[color],
-          variant === 'dot' ? DOT[size] : shape === 'rounded' ? STANDARD[size] : `${STANDARD[size]}  !rounded-lg`,
+          variant === 'dot' ? DOT[size] : shape === 'rounded' ? STANDARD[size] : `${STANDARD[size]} !rounded-lg`,
           anchorSituation === 'inner' ? (
             `${anchorOrigin.vertical === 'top' ? 'top-0' : 'bottom-0'} ${anchorOrigin.horizontal === 'right' ? 'right-0' : 'left-0'}`
           ) : (
