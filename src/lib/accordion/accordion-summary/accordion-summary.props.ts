@@ -2,29 +2,28 @@ import {ReactNode} from "react";
 import {OverridableStringUnion, Colors, Rounded} from "../../../types";
 
 export interface AccordionSummaryProps {
-  children?: ReactNode
+  children?: ReactNode;
+
+  title?: string;
+
+  StartAdornment?: ReactNode;
 
   color?: OverridableStringUnion<Colors,
     AccordionSummaryPropsColorOverrides>;
 
-  style?: any
+  size?: Size;
 
-  size?: Size
+  className?: string;
 
-  className?: string
+  disabled?: boolean;
 
-  disabled?: boolean
+  onClick?: () => void;
 
-  onClick?: () => void
-
-  expandIcon?: ReactNode | null
-
-  rounded?: Rounded
+  rounded?: Rounded;
 }
 
 export interface AccordionSummaryPropsColorOverrides {
 
 }
 
-
-export type Size = 'auto' | 'small' | 'medium' | 'large';
+export type Size = 'tiny' | 'small' | 'medium' | 'large' | 'huge';
