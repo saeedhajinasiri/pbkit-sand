@@ -1,3 +1,3 @@
-import {default as AccordionSummary} from './accordion-summary'
+import AccordionSummary from './accordion-summary'
 
 export default AccordionSummary;

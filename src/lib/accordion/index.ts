@@ -1,3 +1,3 @@
-import {default as Accordion} from './accordion'
+import Accordion from './accordion'
 
 export default Accordion

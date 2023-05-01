@@ -1,21 +1,31 @@
 import React from 'react'
 import classNames from "../../../utils/helpers/class-names";
-import {COLORS, ROUNDED, SIZES} from "./accordion-summary.style";
+import {ROUNDED, SIZES} from "./accordion-summary.style";
 import {AccordionSummaryProps} from './accordion-summary.props'
 
-const CustomAccordionSummary = ({children, rounded = 'none', className, color = 'inherit', size = 'medium', style, onClick, expandIcon = null, ...rest}: AccordionSummaryProps) => {
+const AccordionSummary = (
+  {
+    children,
+    rounded = 'none',
+    className,
+    color = 'primary',
+    size = 'medium',
+    onClick,
+    ...rest
+  }: AccordionSummaryProps) => {
+
+  const accordionSummaryClassName = classNames(
+    `flex gap-x-3 select-none items-center cursor-pointer px-2`,
+    SIZES[size],
+    ROUNDED[rounded],
+    className,
+  )
+
   return (
-    <summary onClick={onClick} style={style} className={classNames(
-      `flex flex-row-reverse items-center cursor-pointer justify-between hover:transition hover:duration-300 hover:ease-in-out px-8`,
-      COLORS[color],
-      SIZES[size],
-      ROUNDED[rounded],
-      className,
-    )} {...rest}>
+    <summary onClick={onClick} className={accordionSummaryClassName} {...rest}>
       {children}
-      {expandIcon}
     </summary>
   )
 }
 
-export default CustomAccordionSummary;
+export default AccordionSummary;

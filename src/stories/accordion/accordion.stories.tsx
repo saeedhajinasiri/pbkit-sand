@@ -4,11 +4,11 @@ import {Accordion} from './accordion';
 import {AccordionDetails} from './accordion-details'
 import {AccordionSummary} from './accordion-summary'
 import {AccordionProps} from "../../lib/accordion/accordion.props";
-import {Text} from "@pezeshk-book/ui-kit";
-
-const tempIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16.431" height="8.226">
-  <path d="M7.5 0a.727.727 0 0 1 .67.423.657.657 0 0 1-.157.746L2.086 6.764a1.973 1.973 0 0 0 0 2.9l5.927 5.595a.658.658 0 0 1 0 .968.756.756 0 0 1-1.026 0L1.06 10.636a3.292 3.292 0 0 1 0-4.84L6.987.2A.748.748 0 0 1 7.5 0z" transform="rotate(-90 4.113 4.113)" fill={"#707070"}/>
-</svg>
+import {classNames, Div, Text} from "@pezeshk-book/ui-kit";
+import StatAdornmentIcon from './start-adornment'
+import {Wrapper} from "../wrapper";
+import {summaryTypography} from "../../lib/accordion/accordion.style";
+import {TEXT_COLORS} from "../../lib/accordion/accordion-summary/accordion-summary.style";
 
 export default {
   title: 'Components/UI Elements/Accordion',
@@ -16,16 +16,69 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof Accordion>;
 
-const Template: ComponentStory<typeof Accordion> = (args: AccordionProps) => {
+const Template: ComponentStory<typeof Accordion> = (
+  {
+    title = 'عنوان آکاردئون',
+    description = 'محل جایگذاری محتوا',
+    ...args
+  }: AccordionProps) => {
+
   return (
-    <Accordion {...args} expendedColor={'primary'}>
-      <AccordionSummary {...args} >
-        Accordion Summary
-      </AccordionSummary>
-      <AccordionDetails>
-        Accordion Details
-      </AccordionDetails>
-    </Accordion>
+    <>
+      <Accordion {...args}>
+        <AccordionSummary {...args} >
+          <Div className={'grow'} dir={"rtl"}>
+            <Text
+              className={classNames(
+                'break-words',
+                args.disabled ? 'text-control-200' : 'text-black')}
+              typography={summaryTypography[args.size || 'medium']}
+              type={'bold'}>
+              {title}
+            </Text>
+          </Div>
+        </AccordionSummary>
+        <AccordionDetails {...args}>
+          <Div dir={'rtl'}>
+            <Text
+              className={classNames(
+                'break-all',
+                TEXT_COLORS[args.color || 'primary'])}
+              typography={summaryTypography[args.size || 'medium']}
+              type={'bold'}>
+              {description || 'محل جایگذاری محتوا'}
+            </Text>
+          </Div>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion {...args}>
+        <AccordionSummary {...args} >
+          <Div className={'grow'} dir={"ltr"}>
+            <Text
+              className={classNames(
+                'break-words',
+                args.disabled ? 'text-control-200' : 'text-black')}
+              typography={summaryTypography[args.size || 'medium']}
+              type={'bold'}>
+              {title}
+            </Text>
+          </Div>
+        </AccordionSummary>
+        <AccordionDetails {...args}>
+          <Div dir={'ltr'}>
+            <Text
+              className={classNames(
+                'break-all',
+                TEXT_COLORS[args.color || 'primary'])}
+              typography={summaryTypography[args.size || 'medium']}
+              type={'bold'}>
+              {description || 'محل جایگذاری محتوا'}
+            </Text>
+          </Div>
+        </AccordionDetails>
+      </Accordion>
+    </>
   )
 };
 
@@ -34,26 +87,62 @@ Default.args = {
   children: 'Default',
 };
 
-const ColorTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) => {
+const ColorTemplate: ComponentStory<typeof Accordion> = (
+  {
+    title = 'عنوان آکاردئون',
+    description = 'محل جایگذاری محتوا',
+    ...args
+  }: AccordionProps) => {
   return (
-    <div className={'grid grid-cols-2 gap-3'}>
-      <Accordion {...args}>
-        <AccordionSummary color={'primary'} {...args}>
-          primary Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          primary Accordion Details
-        </AccordionDetails>
-      </Accordion>
+    <div className={'flex flex-col gap-y-4'}>
+      <Wrapper className={'w-full'} title={'Primary'}>
+        <Accordion color={'danger'} {...args}>
+          <AccordionSummary {...args} >
+            <Div className={'grow flex justify-end'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')}
+                typography={summaryTypography[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails color={'danger'} {...args}>
+            <Div className={'flex justify-end'}>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'danger'])}
+                typography={summaryTypography[args.size || 'medium']}
+                type={'bold'}>
+                {description || 'محل جایگذاری محتوا'}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
 
-      <Accordion {...args}>
-        <AccordionSummary color={'secondary'} {...args}>
-          secondary Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          secondary Accordion Details
-        </AccordionDetails>
-      </Accordion>
+      <Wrapper className={'w-full'} title={'Secondary'}>
+        <Accordion {...args}>
+          <AccordionSummary color={'warning'} {...args}>
+            <Div className={'grow flex justify-end'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')}
+                typography={summaryTypography[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails>
+            {description}
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
 
       <Accordion {...args}>
         <AccordionSummary color={'tertiary'} {...args}>
@@ -156,7 +245,7 @@ const SizeTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =>
   return (
     <div className={'grid grid-cols-2 gap-3'}>
       <Accordion {...args}>
-        <AccordionSummary size={'auto'} {...args}>
+        <AccordionSummary size={'tiny'} {...args}>
           Auto Accordion Summary
         </AccordionSummary>
         <AccordionDetails>
@@ -187,6 +276,16 @@ const SizeTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =>
           Accordion Details
         </AccordionDetails>
       </Accordion>
+      <Wrapper title={'Huge'}>
+        <Accordion {...args}>
+          <AccordionSummary size={'huge'} {...args}>
+            Large Accordion Summary
+          </AccordionSummary>
+          <AccordionDetails>
+            Accordion Details
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
     </div>
   );
 }
@@ -196,7 +295,7 @@ const ExpandIconTemplate: ComponentStory<typeof Accordion> = (args: AccordionPro
   return (
     <div className={'flex flex-col gap-8'}>
       <Accordion {...args}>
-        <AccordionSummary expandIcon={tempIcon} {...args}>
+        <AccordionSummary {...args}>
           Accordion Summary
         </AccordionSummary>
         <AccordionDetails>
@@ -211,8 +310,8 @@ export const ExpandIcon = ExpandIconTemplate.bind({});
 const ExpandColorTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) => {
   return (
     <div className={'flex flex-col gap-8'}>
-      <Accordion {...args} expendedColor={'success'}>
-        <AccordionSummary expandIcon={tempIcon} {...args} color={'primary'}>
+      <Accordion {...args} color={'success'}>
+        <AccordionSummary color={'primary'} {...args}>
           Accordion Summary
         </AccordionSummary>
         <AccordionDetails>
@@ -230,7 +329,7 @@ const RoundedTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps)
   return (
     <div className={'flex flex-col gap-8'}>
       <Accordion {...args} rounded={'large'}>
-        <AccordionSummary expandIcon={tempIcon} {...args} color={'primary'} rounded={'large'}>
+        <AccordionSummary color={'primary'} rounded={'large'} {...args}>
           Accordion Summary
         </AccordionSummary>
         <AccordionDetails>
@@ -241,3 +340,20 @@ const RoundedTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps)
   );
 }
 export const Rounded = RoundedTemplate.bind({});
+
+
+const StartAdornmentTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) => {
+  return (
+    <div className={'flex flex-col gap-8'}>
+      <Accordion {...args} rounded={'large'}>
+        <AccordionSummary StartAdornment={<StatAdornmentIcon/>} {...args} color={'primary'} rounded={'large'}>
+          <Text align={'right'}>آکارديون ۳</Text>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Text align={'right'}>جزییات محتوا</Text>
+        </AccordionDetails>
+      </Accordion>
+    </div>
+  );
+}
+export const StartAdornment = StartAdornmentTemplate.bind({});
