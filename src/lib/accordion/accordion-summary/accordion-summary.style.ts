@@ -19,12 +19,10 @@ export const TEXT_COLORS = {
   inherit: '!text-black',
 };
 
-export const ROUNDED = {
-  full: 'rounded-full',
-  huge: 'rounded-3xl',
-  large: 'rounded-2xl',
-  medium: 'rounded-lg',
-  small: 'rounded',
-  tiny: 'rounded-sm',
-  none: 'rounded-none',
-};
+export enum TypographyEnum {
+  'tiny' = 'xs',
+  'small' = 'sm',
+  'medium' = 'base',
+  'large' = 'lg',
+  'huge' = 'xl'
+}

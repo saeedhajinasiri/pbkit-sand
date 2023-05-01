@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-details[open] summary #svg{
+details[open] summary .svg {
     @apply rotate-180;
 }

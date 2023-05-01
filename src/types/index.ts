@@ -44,5 +44,4 @@ export type Size = 'tiny' | 'small' | 'medium' | 'large' | 'huge';
 /**
  * set of kit Typography Enum
  */
-export enum TypographyEnum {'tiny' = 'xxs', 'small' = 'xs', 'medium' = 'sm', 'large' = 'base', 'huge' = 'lg'}
 

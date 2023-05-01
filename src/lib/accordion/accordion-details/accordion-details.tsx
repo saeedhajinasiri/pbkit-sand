@@ -15,7 +15,7 @@ const AccordionDetails = (
   }: AccordionDetailsProps) => {
 
   const accordionDetailsClassName = classNames(
-    'mt-3 p-2',
+    'p-2',
     variant === 'outlined' ? '!bg-white' : COLORS[color],
     ROUNDED[rounded],
     className

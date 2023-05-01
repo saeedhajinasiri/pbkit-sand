@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from "../../../utils/helpers/class-names";
-import {SIZES} from "./accordion-summary.style";
+import {SIZES, TypographyEnum} from "./accordion-summary.style";
 import {AccordionSummaryProps} from './accordion-summary.props'
-import {Div} from "@pezeshk-book/ui-kit";
+import {Div, Text} from "@pezeshk-book/ui-kit";
 import ArrowDown from "./arrowDown";
 
 const AccordionSummary = (
@@ -29,18 +29,23 @@ const AccordionSummary = (
         <Div className={'min-w-4 min-h-4'}>
           {StartAdornment}
         </Div>
-      ) : null
-      }
-      {children}
-      {!disabled ? (
-        <Div id={'svg'} className={'min-w-4 min-h-2'}>
-          <ArrowDown/>
-        </Div>
-      ) : (
-        <Div className={'min-w-4 min-h-2'}>
-          <ArrowDown/>
-        </Div>
-      )}
+      ) : null}
+      <Text
+        disabled={disabled}
+        align={"start"}
+        className={classNames(
+          'w-full break-words',
+        )}
+        typography={TypographyEnum[size]}
+        type={'bold'}>
+        {children}
+      </Text>
+      <Div className={classNames(
+        `min-w-4 min-h-2`,
+        !disabled ? 'svg' : 'text-control-300'
+      )}>
+        <ArrowDown/>
+      </Div>
     </summary>
   )
 }

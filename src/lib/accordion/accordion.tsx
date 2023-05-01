@@ -1,7 +1,7 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import {AccordionProps} from "./accordion.props";
 import classNames from "../../utils/helpers/class-names";
-import {ROUNDED, COLORS} from './accordion.style';
+import {COLORS, ROUNDED} from './accordion.style';
 
 const Accordion = (
   {
@@ -24,8 +24,6 @@ const Accordion = (
     ROUNDED[rounded],
     className
   );
-
-  useEffect(()=>{console.log(disabled)})
 
   return (
     <details

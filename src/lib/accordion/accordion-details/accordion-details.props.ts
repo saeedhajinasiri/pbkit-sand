@@ -11,7 +11,7 @@ export interface AccordionDetailsProps {
   color?: OverridableStringUnion<Colors,
     AccordionDetailsPropsColorOverrides>;
 
-  rounded?:Rounded;
+  rounded?: Rounded;
 
   className?: string;
 }
