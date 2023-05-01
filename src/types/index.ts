@@ -36,3 +36,12 @@ export type Colors = 'primary' | 'secondary' | 'tertiary' | "info" | 'success' |
  */
 export type Rounded = 'none' | 'tiny' | 'small' | 'medium' | 'large' | 'huge' | 'full'
 
+/**
+ * set of kit size
+ */
+export type Size = 'tiny' | 'small' | 'medium' | 'large' | 'huge';
+
+/**
+ * set of kit Typography Enum
+ */
+
