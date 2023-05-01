@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {OverridableStringUnion, Colors, Rounded} from "../../../types";
+import {OverridableStringUnion, Colors, Size} from "../../../types";
 
 export interface AccordionSummaryProps {
   children?: ReactNode;
@@ -18,12 +18,8 @@ export interface AccordionSummaryProps {
   disabled?: boolean;
 
   onClick?: () => void;
-
-  rounded?: Rounded;
 }
 
 export interface AccordionSummaryPropsColorOverrides {
 
 }
-
-export type Size = 'tiny' | 'small' | 'medium' | 'large' | 'huge';

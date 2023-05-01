@@ -1,4 +1,5 @@
 import {ReactNode} from "react";
+import {Colors, OverridableStringUnion, Rounded} from "../../../types";
 
 export interface AccordionDetailsProps {
   children: ReactNode;
@@ -7,9 +8,14 @@ export interface AccordionDetailsProps {
 
   disabled?: boolean;
 
-  color?: 'primary' | 'warning' | 'danger' | 'secondary' | 'control' | 'purple' | 'tertiary' | 'success' | 'info' | 'inherit';
+  color?: OverridableStringUnion<Colors,
+    AccordionDetailsPropsColorOverrides>;
 
-  rounded?: 'none' | 'tiny' | 'small' | 'medium' | 'large' | 'huge' | 'full';
+  rounded?:Rounded;
 
   className?: string;
+}
+
+export interface AccordionDetailsPropsColorOverrides {
+
 }

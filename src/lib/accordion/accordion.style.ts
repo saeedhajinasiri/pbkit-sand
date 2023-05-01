@@ -8,7 +8,7 @@ export const COLORS = {
   tertiary: 'bg-tertiary-100',
   success: 'bg-success-100',
   info: 'bg-info-100',
-  inherit: 'bg-inherit'
+  inherit: 'bg-inherit',
 };
 
 export const ROUNDED = {
@@ -20,5 +20,3 @@ export const ROUNDED = {
   tiny: 'rounded-sm',
   none: 'rounded-none',
 };
-
-export enum summaryTypography {'tiny' = 'xxs', 'small' = 'xs', 'medium' = 'sm', 'large' = 'base', 'huge' = 'lg'}

@@ -7,7 +7,7 @@ import {AccordionProps} from "../../lib/accordion/accordion.props";
 import {classNames, Div, Text} from "@pezeshk-book/ui-kit";
 import StatAdornmentIcon from './start-adornment'
 import {Wrapper} from "../wrapper";
-import {summaryTypography} from "../../lib/accordion/accordion.style";
+import {TypographyEnum} from "../../types/index";
 import {TEXT_COLORS} from "../../lib/accordion/accordion-summary/accordion-summary.style";
 
 export default {
@@ -26,13 +26,14 @@ const Template: ComponentStory<typeof Accordion> = (
   return (
     <>
       <Accordion {...args}>
-        <AccordionSummary {...args} >
+        <AccordionSummary {...args}>
           <Div className={'grow'} dir={"rtl"}>
             <Text
               className={classNames(
                 'break-words',
-                args.disabled ? 'text-control-200' : 'text-black')}
-              typography={summaryTypography[args.size || 'medium']}
+                args.disabled ? 'text-control-200' : 'text-black')
+              }
+              typography={TypographyEnum[args.size || 'medium']}
               type={'bold'}>
               {title}
             </Text>
@@ -44,22 +45,23 @@ const Template: ComponentStory<typeof Accordion> = (
               className={classNames(
                 'break-all',
                 TEXT_COLORS[args.color || 'primary'])}
-              typography={summaryTypography[args.size || 'medium']}
+              typography={TypographyEnum[args.size || 'medium']}
               type={'bold'}>
-              {description || 'محل جایگذاری محتوا'}
+              {description}
             </Text>
           </Div>
         </AccordionDetails>
       </Accordion>
 
       <Accordion {...args}>
-        <AccordionSummary {...args} >
+        <AccordionSummary {...args}>
           <Div className={'grow'} dir={"ltr"}>
             <Text
               className={classNames(
                 'break-words',
-                args.disabled ? 'text-control-200' : 'text-black')}
-              typography={summaryTypography[args.size || 'medium']}
+                args.disabled ? 'text-control-200' : 'text-black')
+              }
+              typography={TypographyEnum[args.size || 'medium']}
               type={'bold'}>
               {title}
             </Text>
@@ -71,9 +73,9 @@ const Template: ComponentStory<typeof Accordion> = (
               className={classNames(
                 'break-all',
                 TEXT_COLORS[args.color || 'primary'])}
-              typography={summaryTypography[args.size || 'medium']}
+              typography={TypographyEnum[args.size || 'medium']}
               type={'bold'}>
-              {description || 'محل جایگذاری محتوا'}
+              {description}
             </Text>
           </Div>
         </AccordionDetails>
@@ -93,31 +95,35 @@ const ColorTemplate: ComponentStory<typeof Accordion> = (
     description = 'محل جایگذاری محتوا',
     ...args
   }: AccordionProps) => {
+
   return (
-    <div className={'flex flex-col gap-y-4'}>
+    <div className={'flex flex-col gap-y-8'}>
+
       <Wrapper className={'w-full'} title={'Primary'}>
-        <Accordion color={'danger'} {...args}>
-          <AccordionSummary {...args} >
-            <Div className={'grow flex justify-end'}>
+        <Accordion color={'primary'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
               <Text
                 className={classNames(
                   'break-words',
-                  args.disabled ? 'text-control-200' : 'text-black')}
-                typography={summaryTypography[args.size || 'medium']}
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
                 type={'bold'}>
                 {title}
               </Text>
             </Div>
           </AccordionSummary>
-          <AccordionDetails color={'danger'} {...args}>
-            <Div className={'flex justify-end'}>
+          <AccordionDetails color={'primary'} {...args}>
+            <Div>
               <Text
                 className={classNames(
                   'break-all',
-                  TEXT_COLORS[args.color || 'danger'])}
-                typography={summaryTypography[args.size || 'medium']}
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
                 type={'bold'}>
-                {description || 'محل جایگذاری محتوا'}
+                {description}
               </Text>
             </Div>
           </AccordionDetails>
@@ -125,235 +131,946 @@ const ColorTemplate: ComponentStory<typeof Accordion> = (
       </Wrapper>
 
       <Wrapper className={'w-full'} title={'Secondary'}>
-        <Accordion {...args}>
-          <AccordionSummary color={'warning'} {...args}>
-            <Div className={'grow flex justify-end'}>
+        <Accordion color={'secondary'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
               <Text
                 className={classNames(
                   'break-words',
-                  args.disabled ? 'text-control-200' : 'text-black')}
-                typography={summaryTypography[args.size || 'medium']}
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
                 type={'bold'}>
                 {title}
               </Text>
             </Div>
           </AccordionSummary>
-          <AccordionDetails>
-            {description}
+          <AccordionDetails color={'secondary'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'secondary'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
           </AccordionDetails>
         </Accordion>
       </Wrapper>
 
-      <Accordion {...args}>
-        <AccordionSummary color={'tertiary'} {...args}>
-          tertiary Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          tertiary Accordion Details
-        </AccordionDetails>
-      </Accordion>
+      <Wrapper className={'w-full'} title={'Tertiary'}>
+        <Accordion color={'tertiary'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')
+                }
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails color={'tertiary'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'tertiary'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
 
-      <Accordion {...args}>
-        <AccordionSummary color={'info'} {...args}>
-          info Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          info Accordion Details
-        </AccordionDetails>
-      </Accordion>
+      <Wrapper className={'w-full'} title={'Info'}>
+        <Accordion color={'info'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails color={'info'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'info'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
 
-      <Accordion {...args}>
-        <AccordionSummary color={'danger'} {...args}>
-          danger Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          danger Accordion Details
-        </AccordionDetails>
-      </Accordion>
+      <Wrapper className={'w-full'} title={'Success'}>
+        <Accordion color={'success'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails color={'success'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'success'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
 
-      <Accordion {...args}>
-        <AccordionSummary color={'warning'} {...args}>
-          warning Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          warning Accordion Details
-        </AccordionDetails>
-      </Accordion>
+      <Wrapper className={'w-full'} title={'Warning'}>
+        <Accordion color={'warning'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails color={'warning'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'warning'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
 
-      <Accordion {...args}>
-        <AccordionSummary color={'success'} {...args}>
-          success Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          success Accordion Details
-        </AccordionDetails>
-      </Accordion>
+      <Wrapper className={'w-full'} title={'Danger'}>
+        <Accordion color={'danger'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails color={'danger'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'danger'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
 
-      <Accordion {...args}>
-        <AccordionSummary color={'control'} {...args}>
-          control Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          control Accordion Details
-        </AccordionDetails>
-      </Accordion>
+      <Wrapper className={'w-full'} title={'Purple'}>
+        <Accordion color={'purple'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails color={'purple'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'purple'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
 
-      <Accordion {...args}>
-        <AccordionSummary color={'purple'} {...args}>
-          purple Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          purple Accordion Details
-        </AccordionDetails>
-      </Accordion>
+
+      <Wrapper className={'w-full'} title={'Control'}>
+        <Accordion color={'control'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails color={'control'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'control'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Inherit'}>
+        <Accordion color={'inherit'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails color={'inherit'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'inherit'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
     </div>
   );
 }
 export const Color = ColorTemplate.bind({});
 
-const DefaultExpandTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) => {
+const DefaultExpandTemplate: ComponentStory<typeof Accordion> = (
+  {
+    title = 'عنوان آکاردئون',
+    description = 'محل جایگذاری محتوا',
+    ...args
+  }: AccordionProps) => {
+
   return (
-    <div className={'flex flex-col row gap-8'}>
-      <div className={'flex gap-2 w-full'}>
-        <p className={'whitespace-nowrap'}>defaultExpand = True : </p>
-        <Accordion className={'w-full'} {...args} defaultExpanded={true}>
+    <div className={'flex flex-col gap-y-8'}>
+      <Wrapper className={'w-full'} title={'True Expand'}>
+        <Accordion defaultExpanded={true} {...args}>
           <AccordionSummary {...args}>
-            Accordion Summary
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
           </AccordionSummary>
-          <AccordionDetails>
-            Accordion Details
+          <AccordionDetails {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
           </AccordionDetails>
         </Accordion>
-      </div>
-      <div className={'flex gap-2 w-full'}>
-        <p className={'whitespace-nowrap'}>defaultExpand = False : </p>
-        <Accordion className={'w-full'} {...args} defaultExpanded={false}>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'False Expand'}>
+        <Accordion defaultExpanded={false} {...args}>
           <AccordionSummary {...args}>
-            Accordion Summary
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
           </AccordionSummary>
-          <AccordionDetails>
-            Accordion Details
+          <AccordionDetails {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
           </AccordionDetails>
         </Accordion>
-      </div>
+      </Wrapper>
+
     </div>
   );
 }
 export const DefaultExpand = DefaultExpandTemplate.bind({});
 
-const SizeTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) => {
+const SizeTemplate: ComponentStory<typeof Accordion> = (
+  {
+    title = 'عنوان آکاردئون',
+    description = 'محل جایگذاری محتوا',
+    ...args
+  }: AccordionProps) => {
   return (
-    <div className={'grid grid-cols-2 gap-3'}>
-      <Accordion {...args}>
-        <AccordionSummary size={'tiny'} {...args}>
-          Auto Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          Accordion Details
-        </AccordionDetails>
-      </Accordion>
-      <Accordion {...args}>
-        <AccordionSummary size={'small'} {...args}>
-          Small Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          Accordion Details
-        </AccordionDetails>
-      </Accordion>
-      <Accordion {...args}>
-        <AccordionSummary size={'medium'} {...args}>
-          Medium Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          Accordion Details
-        </AccordionDetails>
-      </Accordion>
-      <Accordion {...args}>
-        <AccordionSummary size={'large'} {...args}>
-          Large Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          Accordion Details
-        </AccordionDetails>
-      </Accordion>
-      <Wrapper title={'Huge'}>
+    <div className={'flex flex-col gap-y-8'}>
+
+      <Wrapper className={'w-full'} title={'Tiny'}>
         <Accordion {...args}>
-          <AccordionSummary size={'huge'} {...args}>
-            Large Accordion Summary
+          <AccordionSummary size={'tiny'} {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'tiny']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
           </AccordionSummary>
-          <AccordionDetails>
-            Accordion Details
+          <AccordionDetails {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'tiny']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
           </AccordionDetails>
         </Accordion>
       </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Small'}>
+        <Accordion {...args}>
+          <AccordionSummary size={'small'} {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'small']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'small']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Medium'}>
+        <Accordion {...args}>
+          <AccordionSummary size={'medium'} {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Large'}>
+        <Accordion {...args}>
+          <AccordionSummary size={'large'} {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'large']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'large']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Huge'}>
+        <Accordion {...args}>
+          <AccordionSummary size={'huge'} {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')
+                }
+                typography={TypographyEnum[args.size || 'huge']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'huge']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
     </div>
   );
 }
 export const Size = SizeTemplate.bind({});
 
-const ExpandIconTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) => {
-  return (
-    <div className={'flex flex-col gap-8'}>
-      <Accordion {...args}>
-        <AccordionSummary {...args}>
-          Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          Accordion Details
-        </AccordionDetails>
-      </Accordion>
-    </div>
-  );
-}
-export const ExpandIcon = ExpandIconTemplate.bind({});
+const RoundedTemplate: ComponentStory<typeof Accordion> = (
+  {
+    title = 'عنوان آکاردئون',
+    description = 'محل جایگذاری محتوا',
+    ...args
+  }: AccordionProps) => {
 
-const ExpandColorTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) => {
   return (
-    <div className={'flex flex-col gap-8'}>
-      <Accordion {...args} color={'success'}>
-        <AccordionSummary color={'primary'} {...args}>
-          Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          <Text>
-            Accordion Details
-          </Text>
-        </AccordionDetails>
-      </Accordion>
-    </div>
-  );
-}
-export const ExpandColor = ExpandColorTemplate.bind({});
+    <div className={'flex flex-col gap-y-8'}>
 
-const RoundedTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) => {
-  return (
-    <div className={'flex flex-col gap-8'}>
-      <Accordion {...args} rounded={'large'}>
-        <AccordionSummary color={'primary'} rounded={'large'} {...args}>
-          Accordion Summary
-        </AccordionSummary>
-        <AccordionDetails>
-          Accordion Details
-        </AccordionDetails>
-      </Accordion>
+      <Wrapper className={'w-full'} title={'None'}>
+        <Accordion rounded={'none'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails rounded={'none'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Tiny'}>
+        <Accordion rounded={'tiny'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails rounded={'tiny'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Small'}>
+        <Accordion rounded={'small'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black',
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails rounded={'small'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'],
+                )}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Medium'}>
+        <Accordion rounded={'medium'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')
+                }
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails rounded={'medium'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'])}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Large'}>
+        <Accordion rounded={'large'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')
+                }
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails rounded={'large'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'])}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Huge'}>
+        <Accordion rounded={'huge'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')
+                }
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails rounded={'huge'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'])}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Full'}>
+        <Accordion rounded={'full'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')
+                }
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails rounded={'full'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'])}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
     </div>
   );
 }
 export const Rounded = RoundedTemplate.bind({});
 
+const DisabledTemplate: ComponentStory<typeof Accordion> = (
+  {
+    title = 'عنوان آکاردئون',
+    description = 'محل جایگذاری محتوا',
+    ...args
+  }: AccordionProps) => {
 
-const StartAdornmentTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) => {
   return (
-    <div className={'flex flex-col gap-8'}>
-      <Accordion {...args} rounded={'large'}>
-        <AccordionSummary StartAdornment={<StatAdornmentIcon/>} {...args} color={'primary'} rounded={'large'}>
-          <Text align={'right'}>آکارديون ۳</Text>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Text align={'right'}>جزییات محتوا</Text>
-        </AccordionDetails>
-      </Accordion>
+    <div className={'flex flex-col gap-y-8'}>
+      <Wrapper className={'w-full'} title={'disabled={true}'}>
+        <Accordion disabled={true} {...args}>
+          <AccordionSummary disabled={true} {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')
+                }
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails disabled={true} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'])}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'disabled={false}'}>
+        <Accordion {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')
+                }
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'])}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
     </div>
+  );
+}
+export const Disabled = DisabledTemplate.bind({});
+
+const VariantTemplate: ComponentStory<typeof Accordion> = (
+  {
+    title = 'عنوان آکاردئون',
+    description = 'محل جایگذاری محتوا',
+    ...args
+  }: AccordionProps) => {
+
+  return (
+    <div className={'flex flex-col gap-y-8'}>
+      <Wrapper className={'w-full'} title={'Variant: Outlined'}>
+        <Accordion variant={'outlined'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')
+                }
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails variant={'outlined'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'])}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+      <Wrapper className={'w-full'} title={'Variant : Filled'}>
+        <Accordion variant={'filled'} {...args}>
+          <AccordionSummary {...args}>
+            <Div className={'grow'}>
+              <Text
+                className={classNames(
+                  'break-words',
+                  args.disabled ? 'text-control-200' : 'text-black')
+                }
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {title}
+              </Text>
+            </Div>
+          </AccordionSummary>
+          <AccordionDetails variant={'filled'} {...args}>
+            <Div>
+              <Text
+                className={classNames(
+                  'break-all',
+                  TEXT_COLORS[args.color || 'primary'])}
+                typography={TypographyEnum[args.size || 'medium']}
+                type={'bold'}>
+                {description}
+              </Text>
+            </Div>
+          </AccordionDetails>
+        </Accordion>
+      </Wrapper>
+
+    </div>
+  );
+}
+export const Variant = VariantTemplate.bind({});
+
+const StartAdornmentTemplate: ComponentStory<typeof Accordion> = (
+  {
+    title = 'عنوان آکاردئون',
+    description = 'محل جایگذاری محتوا',
+    ...args
+  }: AccordionProps) => {
+  return (
+    <Accordion {...args}>
+      <AccordionSummary StartAdornment={<StatAdornmentIcon/>} {...args}>
+        <Div className={'grow'} dir={"rtl"}>
+          <Text
+            className={classNames(
+              'break-words',
+              args.disabled ? 'text-control-200' : 'text-black')
+            }
+            typography={TypographyEnum[args.size || 'medium']}
+            type={'bold'}>
+            {title}
+          </Text>
+        </Div>
+      </AccordionSummary>
+      <AccordionDetails {...args}>
+        <Div dir={'rtl'}>
+          <Text
+            className={classNames(
+              'break-all',
+              TEXT_COLORS[args.color || 'primary'])
+            }
+            typography={TypographyEnum[args.size || 'medium']}
+            type={'bold'}>
+            {description}
+          </Text>
+        </Div>
+      </AccordionDetails>
+    </Accordion>
   );
 }
 export const StartAdornment = StartAdornmentTemplate.bind({});
